@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body style="background-color: #F8F9FC;">
+
+
+    
+    <div class="card mr-auto ml-auto col col-sm" style="width: 30rem; ">
+
+        <div class="card-header">
+            <div class="text-center">
+                <h3>Nuevo Usuario</h3>
+            </div>
+        </div>
+
+        <div class="card-body ">
+
+           
+         
+
+            <form [formGroup]="empleados" (ngSubmit)="guardar(this.empleados.value)">
+
+
+
+                <div class="row">
+             
+                    <div class="col">
+                        <label for="exampleInputEmail1" class=" text-black-50 fw-bold fst-italic">Cedula</label>
+                        <input  formControlName="cedula" 
+                        maxlength="10"
+                        onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" 
+                        
+                        [class.border-danger]="empleados.get('cedula')!.touched && empleados.get('cedula')?.invalid"
+                        [class.border-success]="empleados.get('cedula')!.touched && empleados.get('cedula')?.valid"
+                        
+                        
+                        type="text" class="form-control mb-2">
+    
+                    </div>
+                    <div class="col">
+                      
+                        <label for="exampleInputEmail1" class=" text-black-50 fw-bold fst-italic">Nombre</label>
+                        <input formControlName="nombre"
+                        [class.border-danger]="empleados.get('nombre')!.touched && empleados.get('nombre')?.invalid"
+                        [class.border-success]="empleados.get('nombre')!.touched && empleados.get('nombre')?.valid"
+                        type="text" class="form-control mb-2">
+                        
+                    </div>
+    
+                </div>
+
+                <div class="row">
+
+             
+                    <div class="col">
+            
+    
+                    </div>
+    
+                    <div class="col">
+                      
+               
+                        
+                    </div>
+    
+                </div>
+
+
+                
+                <div class="row">
+             
+             
+    
+                    <div class="col">
+                        <label for="exampleInputEmail1" class=" text-black-50 fw-bold fst-italic">Direccion</label>
+                        <input formControlName="direccion"
+
+
+
+                        [class.border-danger]="empleados.get('direccion')!.touched && empleados.get('direccion')?.invalid"
+                        [class.border-success]="empleados.get('direccion')!.touched && empleados.get('direccion')?.valid"
+
+
+                        
+direccion
+                        
+                        
+                        type="text" class="form-control">
+               
+                        
+                    </div>
+
+
+                    <div class="col">
+                      
+                        <label  for="exampleInputEmail1" class=" text-black-50 fw-bold fst-italic">Telefono</label>
+                        <input maxlength="15" formControlName="telefono" 
+
+                        [class.border-danger]="empleados.get('telefono')!.touched && empleados.get('telefono')?.invalid"
+                        [class.border-success]="empleados.get('telefono')!.touched && empleados.get('telefono')?.valid"
+
+                        
+                        type="number" class="form-control">
+                        
+                    </div>
+    
+                </div>
+
+
+                
+          
+
+
+                <div class="row">
+             
+                    <div class="col">
+                      
+                        <label for="exampleInputEmail1" class=" text-black-50 fw-bold fst-italic">Usuario</label>
+                        <input  formControlName="usuario"
+                        
+
+                        [class.border-danger]="empleados.get('usuario')!.touched && empleados.get('usuario')?.invalid"
+                        [class.border-success]="empleados.get('usuario')!.touched && empleados.get('usuario')?.valid"
+                        
+                        
+                        
+                        type="text" class="form-control">
+    
+                    </div>
+    
+                    <div class="col">
+                      
+                        <label  for="exampleInputEmail1" class=" text-black-50 fw-bold fst-italic">Clave</label>
+                        <input  maxlength="15" formControlName="clave"
+                        [class.border-danger]="empleados.get('clave')!.touched && empleados.get('clave')?.invalid"
+                        [class.border-success]="empleados.get('clave')!.touched && empleados.get('clave')?.valid"
+
+                        
+                        
+                        type="password" class="form-control">
+                        
+                    </div>
+    
+                </div>
+
+                <div class="row">
+             
+                    <div class="col">
+                      
+                        <label for="exampleInputEmail1" class=" text-black-50 fw-bold fst-italic">Correo</label>
+                        <input  formControlName="correo" 
+
+                        [class.border-danger]="empleados.get('correo')!.touched && empleados.get('correo')?.invalid"
+                        [class.border-success]="empleados.get('correo')!.touched && empleados.get('correo')?.valid"
+                        
+                        
+                        
+                        type="text" class="form-control">
+    
+                    </div>
+    
+                  
+    
+                </div>
+
+     
+                    
+              
+            <div class="text-center">
+              <button class="btn btn-primary mt-3 col-12 col-sm-3 mr-3">Guardar</button>
+              <button class="btn btn-secondary mt-3 col-12 col-sm-3" [routerLink]="'/dashboard/listaEmpleado'" >Atras</button>
+            </div>
+
+         
+
+        </form>
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+</body>
+
+</html>
+

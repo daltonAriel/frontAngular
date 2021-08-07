@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body style="background-color: #F8F9FC;">
+
+
+
+    <div class="card mr-auto ml-auto col col-sm" style="width: 30rem; ">
+
+        <div class="card-header">
+            <div class="text-center">
+                <h3>Nuevo Proveedor</h3>
+            </div>
+        </div>
+
+        <div class="card-body ">
+
+
+
+
+            <form [formGroup]="proved" (ngSubmit)="guardar(this.proved.value)">
+
+
+
+                <div class="row">
+
+                    <div class="col">
+                        <label for="exampleInputEmail1" class=" text-black-50 fw-bold fst-italic">Cedula</label>
+                        <input maxlength="10"  formControlName="cedula" type="text"
+
+                        onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" 
+                        [class.border-danger]="proved.get('cedula')!.touched && proved.get('cedula')?.invalid"
+                        [class.border-success]="proved.get('cedula')!.touched && proved.get('cedula')?.valid"
+                        class="form-control mb-2">
+
+                    </div>
+
+                    <div class="col">
+
+                        <label for="exampleInputEmail1" class=" text-black-50 fw-bold fst-italic">Nombre</label>
+                        <input formControlName="nombre"  type="text" class="form-control mb-2"
+                        [class.border-danger]="proved.get('nombre')!.touched && proved.get('nombre')?.invalid"
+                        [class.border-success]="proved.get('nombre')!.touched && proved.get('nombre')?.valid"
+                       >
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col">
+
+
+                    </div>
+
+                    <div class="col">
+
+
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="row">
+
+
+
+                    <div class="col">
+                        <label for="exampleInputEmail1" class=" text-black-50 fw-bold fst-italic">Direccion</label>
+                        <input formControlName="direccion"  type="text" class="form-control"
+                        [class.border-danger]="proved.get('direccion')!.touched && proved.get('direccion')?.invalid"
+                        [class.border-success]="proved.get('direccion')!.touched && proved.get('direccion')?.valid"
+                       >
+
+
+                    </div>
+
+
+                    <div class="col">
+
+                        <label  for="exampleInputEmail1" class=" text-black-50 fw-bold fst-italic">Telefono</label>
+                        <input maxlength="15" formControlName="telefono" type="text" class="form-control"
+                         [class.border-danger]="proved.get('telefono')!.touched && proved.get('telefono')?.invalid"
+                         [class.border-success]="proved.get('telefono')!.touched && proved.get('telefono')?.valid"
+                         maxlength="15" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" 
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+
+
+
+
+
+                <div class="row">
+
+                    <div class="col">
+
+                        <label for="exampleInputEmail1" class=" text-black-50 fw-bold fst-italic">Correo</label>
+                        <input  formControlName="correo"  type="text" class="form-control"
+                         [class.border-danger]="proved.get('correo')!.touched && proved.get('correo')?.invalid"
+                         [class.border-success]="proved.get('correo')!.touched && proved.get('correo')?.valid"
+                        >
+
+                    </div>
+
+
+
+                </div>
+
+
+
+
+            <div class="text-center">
+              <button class="btn btn-primary mt-3 col-12 col-sm-3 mr-3">Guardar</button>
+              <button class="btn btn-secondary mt-3 col-12 col-sm-3" [routerLink]="'/menu/listarProveedor'" >Atras</button>
+            </div>
+
+
+
+        </form>
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+</body>
+
+</html>
+

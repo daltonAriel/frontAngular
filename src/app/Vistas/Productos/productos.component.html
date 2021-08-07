@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Productos</title>
+</head>
+<div class="container">
+  <div class="text-uppercase text-center pt-3 pb-2 ">
+    <h3 style="font-weight: bold;">Productos</h3>
+  </div>
+</div>
+
+
+<body style="background-color: #F8F9FC;">
+
+
+
+  <div class="text-center mt-4 ">
+    <a class="btn btn-primary col-5 col-sm-3" (click)="openModal(nuevo)">Nuevo Producto</a>
+  </div>
+
+
+
+
+
+  <div *ngIf="spinner==0" class="table-responsive mt-4    container" style="height: 530 px;">
+
+
+    <div class="table-responsive mt-4    container" style="height: 505px;">
+      <table class="table table-bordered table-sm text-center">
+        <thead class="bg-dark text-white ">
+          <tr>
+            <td>#</td>
+            <td>Nombre</td>
+            <td>Unidad</td>
+            <td>Descripcion</td>
+            <td>Opciones</td>
+
+          </tr>
+        </thead>
+
+        
+        <tbody>
+          <tr class="text-dark webkit-scrollbar," class="text-dark">
+          <tr *ngFor="let item of productoObj ; let i=index;" class="text-dark webkit-scrollbar," class="text-dark">
+            <td><strong>{{i+1}}</strong></td>
+
+            <td>{{item.nombreProducto}}</td>
+            <td>{{item.unidad}}</td>
+            <td>{{item.descripcion}}</td>
+
+            <td class="text-center ">
+              <div class="btn-group dropdown " role="group" aria-label="Button group with nested dropdown">
+                <div class="btn-group" role="group">
+                  <button data-toggle="dropdown" id="dropdownMenuButton" type="button"
+                    class="btn btn-primary dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                    Opciones
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                    <li> <a class="dropdown-item" (click)="openModal(actualizar); llenarCampos(item)">Editar</a></li>
+                    <li> <a class="dropdown-item" (click)="elimiarProd(item.idProductos)">Eliminar</a></li>
+                  </ul>
+                </div>
+              </div>
+
+
+
+            </td>
+          </tr>
+
+
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <div *ngIf="spinner==1" class="text-center  " style="margin-top: 10em;">
+
+    <div class="spinner-border text-primary" role="status">
+
+    </div>
+
+
+  </div>
+
+</body>
+
+
+
+
+<ng-template #nuevo let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Nuevo Producto</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+    <p>Tipo Productor</p>
+    <select class="form-control" [(ngModel)]="tipoProductorIdNew" (change)="filtrarCategorias($event.target.value)">
+      <option value=0 selected disabled hidden>Seleccione una Opcion</option>
+      <option value={{item.idTipoProductores}} *ngFor="let item of tipoProductoresObj">
+        {{item.nombre}}
+      </option>
+    </select>
+
+    <br>
+
+    <p>Categoria</p>
+    <select class="form-control" [(ngModel)]="categoriaIdNew">
+      <option value=0 selected disabled hidden>Seleccione una Opcion</option>
+
+      <ng-container *ngFor="let item of categoriaFiltradoObj">
+        <option value={{item.idCategorias}} *ngIf="item.descripcion == null">
+          {{item.nombre}}
+        </option>
+        <option value={{item.idCategorias}} *ngIf="item.descripcion != null">
+          {{item.nombre}} - {{item.descripcion}}
+        </option>
+      </ng-container>
+    </select>
+
+    <br>
+
+    <p>Nombre</p>
+    <input type="text" class="form-control" [(ngModel)]="nombreNew">
+    <br>
+
+    <p>Unidad</p>
+    <input type="text" class="form-control" [(ngModel)]="unidadNew">
+    <br>
+
+    <p>Descripcion</p>
+    <input type="text" class="form-control" [(ngModel)]="descripcionNew">
+    <br>
+
+    <div *ngIf="tallaCheck == true">
+      <p>Talla</p>
+      <input type="text" class="form-control" [(ngModel)]="tallaNew">
+      <br>
+    </div>
+
+
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="guardar(); modal.dismiss('Cross click')">Guardar</button>
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Cancelar</button>
+  </div>
+</ng-template>
+
+
+
+
+
+<ng-template #actualizar let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Actualizr Producto</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+    <p>Tipo Productor</p>
+    <select class="form-control" [(ngModel)]="tipoProductorIdNew" (change)="filtrarCategorias($event.target.value)">
+      <option value=0 selected disabled hidden>Seleccione una Opcion</option>
+      <option value={{item.idTipoProductores}} *ngFor="let item of tipoProductoresObj">
+        {{item.nombre}}
+      </option>
+    </select>
+
+    <br>
+
+    <p>Categoria</p>
+    <select class="form-control" [(ngModel)]="categoriaIdNew">
+      <option value=0 selected disabled hidden>Seleccione una Opcion</option>
+
+      <ng-container *ngFor="let item of categoriaFiltradoObj">
+        <option value={{item.idCategorias}} *ngIf="item.descripcion == null">
+          {{item.nombre}}
+        </option>
+        <option value={{item.idCategorias}} *ngIf="item.descripcion != null">
+          {{item.nombre}} - {{item.descripcion}}
+        </option>
+      </ng-container>
+    </select>
+
+    <br>
+
+    <p>Nombre</p>
+    <input type="text" class="form-control" [(ngModel)]="nombreUpdate">
+    <br>
+
+    <p>Unidad</p>
+    <input type="text" class="form-control" [(ngModel)]="unidadUpdate">
+    <br>
+
+    <p>Descripcion</p>
+    <input type="text" class="form-control" [(ngModel)]="descripcionUpdate">
+    <br>
+
+    <div *ngIf="tallaCheck == true">
+      <p>Talla</p>
+      <input type="text" class="form-control" [(ngModel)]="tallaUpdate">
+      <br>
+    </div>
+
+
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="actualizarProd();modal.close('Close click')">Guardar
+      Cambios</button>
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Cancelar</button>
+  </div>
+</ng-template>
+
+
+
+
+</html>

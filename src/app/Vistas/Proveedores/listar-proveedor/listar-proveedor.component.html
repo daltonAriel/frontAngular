@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar Proveedores</title>
+</head>
+
+
+
+<div class="container">
+    <div class="text-uppercase text-center pt-3 pb-2 ">
+        <h3 style="font-weight: bold;">Proveedores</h3>
+    </div>
+</div>
+
+
+<body style="background-color: #F8F9FC;">
+
+    <div class="container-fluid  col-8  col-sm-6  col-lg-4  mt-3">
+        <div class="row">
+
+            <!-- <input  [(ngModel)]="busqueda" (keyup)="buscador($event)"  name="buscar" id="buscar" type="text" class="form-control " aria-describedby="emailHelp"
+                placeholder="Buscar Proveedor"> -->
+
+        </div>
+
+
+    </div>
+    <div class="text-center mt-4 ">
+        <a class="btn btn-primary col-5 col-sm-3 " [routerLink]="['/menu/nuevoProveedor']">Nuevo</a>
+
+    </div>
+
+    <div *ngIf="spinner==0" class="table-responsive mt-4    container" style="height: 505px;">
+        <table class="table table-bordered table-sm text-center">
+            <thead class="bg-dark text-white ">
+                <tr>
+                    <td>#</td>
+                    <td>Cedula</td>
+                    <td>Nombre</td>
+                    <td>Direccion </td>
+                    <td>Telefono </td>
+                    <td>Correo</td>
+                    <td>Opciones</td>
+
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="text-dark webkit-scrollbar," class="text-dark">
+                <tr *ngFor="let item of proveeObj    ; let i=index;" class="text-dark webkit-scrollbar,"
+                    class="text-dark">
+                    <td><strong>{{i+1}}</strong></td>
+                    <td>{{item.cedula}}</td>
+                    <td>{{item.nombre}}</td>
+                    <td>{{item.direccion}}</td>
+                    <td>{{item.telefono}}</td>
+                    <td>{{item.correo}}</td>
+
+                    <td class="text-center ">
+
+
+                        <div class="btn-group dropdown " role="group" aria-label="Button group with nested dropdown">
+
+
+
+                            <div class="btn-group" role="group">
+                                <button data-toggle="dropdown" id="dropdownMenuButton" type="button"
+                                    class="btn btn-primary dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                                    Opciones
+                                </button>
+
+                                <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+
+                                  <li> <a class="dropdown-item"  [routerLink]="['/menu/editarProveedor/',item.idProveedores]">Editar</a></li>
+                                  <li> <a class="dropdown-item"  (click)="eliminar(item.idProveedores)" style="cursor: pointer;">Eliminar</a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+
+
+
+                    </td>
+                </tr>
+
+                <!-- <tr><td *ngIf="proveedoresList.length==0" class='text-center' colspan='10'>No existe Registro   </td> </tr> -->
+            </tbody>
+        </table>
+    </div>
+
+    
+    <div  *ngIf="spinner==1" class="text-center  " style="margin-top: 10em;">
+
+        <div class="spinner-border text-primary" role="status">
+
+        </div>
+
+
+    </div>
+
+</body>
+
+
+
+</html>
