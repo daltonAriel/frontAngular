@@ -31,7 +31,27 @@ export class ListarDetalleProductosComponent implements OnInit {
 
   }
 
-  listar() {
+  
+  buscar(busqueda:string)
+  {
+  
+    this.detalleCategoria.buscar(busqueda).subscribe((res:any)=>{
+
+
+              
+         this.detalleCategoriaList=res;
+
+     
+
+         
+    
+
+   },error=> alert("Error al conectar con el servidor"))
+  }
+
+
+
+  listar() {  
 
     this.spinner = 1;
 

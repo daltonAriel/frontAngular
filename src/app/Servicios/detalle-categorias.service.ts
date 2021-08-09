@@ -1,5 +1,5 @@
 import { Productos } from './../Clases/productos';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { detalleCategorias } from '../Clases/detalleProductos';
@@ -70,6 +70,16 @@ export class DetalleCategoriasService {
 
     return this.http.put<detalleCategorias[]>(this.api + idDetalle, detalleCategorias);
 
+  }
+
+
+  buscar(busqueda:any)
+  {
+       
+    var params= new HttpParams()
+    .append('busqueda',busqueda)
+      
+    return this.http.get(this.api + 'buscador',{params});
   }
 
 }

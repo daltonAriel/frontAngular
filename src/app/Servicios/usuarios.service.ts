@@ -26,6 +26,16 @@ export class UsuariosService {
     return this.http.post(this.api,usuario);
   }
 
+  buscar(busqueda:any)
+  {
+       
+    var params= new HttpParams()
+    .append('busqueda',busqueda)
+      
+    return this.http.get(this.api + 'buscador',{params});
+  }
+
+
   listar():Observable<Usuarios[]>
   {
     return this.http.get<Usuarios[]>(this.api);

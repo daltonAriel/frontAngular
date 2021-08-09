@@ -1,3 +1,4 @@
+import { error } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { Usuarios } from 'src/app/Clases/usuarios';
 import { UsuariosService } from 'src/app/Servicios/usuarios.service';
@@ -18,7 +19,29 @@ export class ListarUsuarioComponent implements OnInit {
 
   ngOnInit(): void {
     this.listar();  
+
+   
   }
+
+
+
+  buscar(busqueda:string)
+  {
+  
+   this.usuarios.buscar(busqueda).subscribe((res:any)=>{
+
+              
+         this.clienteObj=res;
+
+         
+    
+
+   },error=> alert("Error al conectar con el servidor"))
+  }
+
+
+
+
 
   listar()
   {
@@ -56,4 +79,24 @@ export class ListarUsuarioComponent implements OnInit {
       }
     })
   }
+
+  
+
+  // buscar(busqueda:any)
+  // {
+
+  //  return console.log(busqueda);
+
+  // this.usuarios.buscar(busqueda).subscribe(res=>{
+
+  //   console.log(res);
+
+  // }, error=>{
+  //   alert("Error al conectar con el servidor");
+  // })
+  // }
+
+
+
 }
+

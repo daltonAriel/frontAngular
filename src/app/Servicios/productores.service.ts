@@ -45,4 +45,14 @@ export class ProductoresService {
     return this.http.get(this.api+'cedulaCliente',{params});
 
   }
+
+  buscar(busqueda:any)
+  {
+       
+    var params= new HttpParams()
+    .append('busqueda',busqueda)
+      
+    return this.http.get(this.api + 'buscador',{params});
+  }
+
 }

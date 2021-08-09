@@ -27,7 +27,10 @@
                             <div class="row">
                                 <div class="col-12">
                                     <label for="exampleInputEmail1" class=" text-black-50 fw-bold fst-italic">Productores</label>
-                                    <select class="form-control" aria-label="Default select example" formControlName='idProductores'>
+                                    <select 
+                                    [class.border-danger]="proved.get('idProductores')!.touched && proved.get('idProductores')?.invalid"
+                                    [class.border-success]="proved.get('idProductores')!.touched && proved.get('idProductores')?.valid"
+                                    class="form-control" aria-label="Default select example" formControlName='idProductores'>
                                         <option value="" disabled>--Seleccione un Productor--</option>
                                         <option *ngFor="let item of productorObj" value="{{item.idProductores}}">{{item.nombres}} {{item.apellidos}}</option>
                                       </select>
@@ -41,7 +44,10 @@
                    
                             <div class="col mt-4">
                                 <label for="exampleInputEmail1" class=" text-black-50 fw-bold fst-italic">Productos</label>
-                                <select   class="form-control" aria-label="Default select example" formControlName='idProductos'>
+                                <select  
+                                [class.border-danger]="proved.get('idProductos')!.touched && proved.get('idProductos')?.invalid"
+                                [class.border-success]="proved.get('idProductos')!.touched && proved.get('idProductos')?.valid"
+                                class="form-control" aria-label="Default select example" formControlName='idProductos'>
                                     <option  value="" disabled>--Seleccione un Producto--</option>
                                     <option *ngFor="let item of productosObj" value="{{item.idProductos}}">{{item.nombreProducto}}</option>
                                   </select>
@@ -59,6 +65,8 @@
                             <div class="col-4">
                                 <label for="exampleInputEmail1" class=" text-black-50 fw-bold fst-italic">Cantidad</label>
                                 <input 
+                                [class.border-danger]="proved.get('stock')!.touched && proved.get('stock')?.invalid"
+                                [class.border-success]="proved.get('stock')!.touched && proved.get('stock')?.valid"
                                 
                                 maxlength="10" formControlName="stock" type="number" class="form-control mb-2">
                             </div>
@@ -67,6 +75,9 @@
                             <div class="col-4">
                                 <label for="exampleInputEmail1" class=" text-black-50 fw-bold fst-italic">$ Unidad</label>
                                 <input
+                                [class.border-danger]="proved.get('precioUnidad')!.touched && proved.get('precioUnidad')?.invalid"
+                                [class.border-success]="proved.get('precioUnidad')!.touched && proved.get('precioUnidad')?.valid"
+                                
                            
                                 maxlength="10" formControlName="precioUnidad" type="number" class="form-control mb-2">
                             </div>
@@ -76,6 +87,8 @@
                             <div class="col-4">
                                 <label for="exampleInputEmail1" class=" text-black-50 fw-bold fst-italic">$Docena</label>
                                 <input
+                                [class.border-danger]="proved.get('precioDocena')!.touched && proved.get('precioDocena')?.invalid"
+                                [class.border-success]="proved.get('precioDocena')!.touched && proved.get('precioDocena')?.valid"
                                  maxlength="10" formControlName="precioDocena" type="number" class="form-control mb-2">
                             </div>
                             

@@ -9,14 +9,52 @@
 
 
 
-<div class="container">
-    <div class="text-uppercase text-center pt-3 pb-2 ">
-        <h3 style="font-weight: bold;">Usuarios</h3>
-    </div>
-</div>
+
+
+
 
 
 <body style="background-color: #F8F9FC;">
+
+
+
+
+
+
+    <div class="container">
+        <div class="text-uppercase text-center pt-3 pb-2 ">
+            <h3 style="font-weight: bold;">Usuarios</h3>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="form-group ml-auto mr-auto col-4">
+
+
+        <div class="col mt-3">
+
+            <span>
+
+                <i class="fa fa-search"></i>
+
+            </span>
+
+            <input  min="0"    on type="text" class="form-control"  aria-describedby="helpId" placeholder="" (keyup)="buscar($event.target.value)" >
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+
 
     <div class="container-fluid  col-8  col-sm-6  col-lg-4  mt-3">
         <div class="row">
@@ -33,7 +71,7 @@
 
     </div>
 
-    <div  *ngIf="spinner==0" class="table-responsive mt-4    container" style="height: 505px;">
+    <div *ngIf="spinner==0" class="table-responsive mt-4    container" style="height: 505px;">
         <table class="table table-bordered table-sm text-center">
             <thead class="bg-dark text-white ">
                 <tr>
@@ -76,9 +114,11 @@
 
                                 <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
 
-                                  <li> <a class="dropdown-item"  [routerLink]="['/menu/editarUsuario/',item.idUsuarios]">Editar</a></li> 
-                                  <li style="cursor: pointer;" >  <a class="dropdown-item"  (click)="eliminar(item.idUsuarios)">Eliminar</a></li>  
-                                   
+                                    <li> <a class="dropdown-item"
+                                            [routerLink]="['/menu/editarUsuario/',item.idUsuarios]">Editar</a></li>
+                                    <li style="cursor: pointer;"> <a class="dropdown-item"
+                                            (click)="eliminar(item.idUsuarios)">Eliminar</a></li>
+
                                 </ul>
                             </div>
                         </div>
@@ -87,12 +127,14 @@
 
                     </td>
                 </tr>
-                <tr><td *ngIf="clienteObj.length==0" class='text-center' colspan='10'>No existe Registro   </td> </tr>
+                <tr>
+                    <td *ngIf="clienteObj.length==0" class='text-center' colspan='10'>No existe Registro </td>
+                </tr>
             </tbody>
         </table>
     </div>
 
-    <div  *ngIf="spinner==1" class="text-center  " style="margin-top: 10em;">
+    <div *ngIf="spinner==1" class="text-center  " style="margin-top: 10em;">
 
         <div class="spinner-border text-primary" role="status">
 
@@ -100,7 +142,7 @@
 
 
     </div>
-   
+
 </body>
 
 

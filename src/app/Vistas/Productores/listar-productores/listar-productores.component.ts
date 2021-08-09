@@ -59,4 +59,22 @@ export class ListarProductoresComponent implements OnInit {
       }
     })
   }
+
+
+
+  buscar(busqueda:string)
+  {
+  
+    this.productor.buscar(busqueda).subscribe((res:any)=>{
+
+              
+         this.proveeObj=res;
+
+         
+    
+
+   },error=> alert("Error al conectar con el servidor"))
+  }
+
+
 }

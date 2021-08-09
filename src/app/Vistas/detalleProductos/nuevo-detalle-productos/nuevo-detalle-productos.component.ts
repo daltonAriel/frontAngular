@@ -1,12 +1,13 @@
+import { validate } from './../../Utilidades/validate';
 import { ActivatedRoute, Router } from '@angular/router';
-import { detalleCategorias } from './../../../Clases/detalleProductos';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Productores } from 'src/app/Clases/productores';
 import { Productos } from 'src/app/Clases/productos';
 import { DetalleCategoriasService } from 'src/app/Servicios/detalle-categorias.service';
 import Swal from 'sweetalert2';
-import { invalid } from '@angular/compiler/src/render3/view/util';
+
+
 
 @Component({
   selector: 'app-nuevo-detalle-productos',
@@ -18,10 +19,10 @@ export class NuevoDetalleProductosComponent implements OnInit {
   proved = new FormGroup({
 
     idProductos: new FormControl('', Validators.required),
-    stock: new FormControl('', Validators.required),
-    precioUnidad: new FormControl('', Validators.required),
-    precioDocena: new FormControl('', Validators.required),
-    idProductores: new FormControl('', [Validators.required, Validators.email]),
+    stock: new FormControl('',[validate.valor]),
+    precioUnidad: new FormControl('', [validate.valor]),
+    precioDocena: new FormControl('', [validate.valor]),
+    idProductores: new FormControl('', Validators.required),
 
 
   });
@@ -63,11 +64,13 @@ export class NuevoDetalleProductosComponent implements OnInit {
 
 
 
-    if(pro.invalid)
+
+
+    if(this.proved.invalid)
     {
 
      
-      Swal.fire('Productos','Todos los campos son requeridos','warning');
+      Swal.fire('Productos-Proveedores','Todos los campos son requeridos','warning');
 
       return
     }
