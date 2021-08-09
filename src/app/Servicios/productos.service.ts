@@ -10,10 +10,10 @@ import { Proveedores } from '../Clases/proveedores';
   providedIn: 'root'
 })
 export class ProductosService {
-    apiCategoria="https://localhost:44382/api/categorias/";
+    apiCategoria="https://localhost:44349/api/categorias/";
     apiProducto="https://localhost:44349/api/productos/";
-    apiProveedor="https://localhost:44382/api/proveedores/";
-
+    apiProveedor="https://localhost:44349/api/proveedores/";
+  
 
   //apiCategoria="https://apinuevo.azurewebsites.net/api/categorias/";
   //apiProducto="https://apinuevo.azurewebsites.net/api/productos/";
