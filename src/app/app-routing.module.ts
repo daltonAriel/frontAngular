@@ -29,7 +29,7 @@ const routes: Routes = [
   { path:'editarUsuario/:id', component:NuevoUsuarioComponent},
 
   { path:'listarCategoria', component:ListarCategoriaComponent},
-  
+
 
   { path:'listarProveedor', component:ListarProductoresComponent},
   { path:'nuevoProveedor', component:NuevoProductoresComponent},

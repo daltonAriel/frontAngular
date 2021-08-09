@@ -22,6 +22,7 @@ import { NuevoProductoresComponent } from './Vistas/Productores/nuevo-productore
 import {CargarScriptsService} from './Servicios/cargar-scripts.service';
 import { ListarDetalleProductosComponent } from './Vistas/detalleProductos/listar-detalle-productos/listar-detalle-productos.component';
 import { NuevoDetalleProductosComponent } from './Vistas/detalleProductos/nuevo-detalle-productos/nuevo-detalle-productos.component'
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { NuevoDetalleProductosComponent } from './Vistas/detalleProductos/nuevo-
     ReactiveFormsModule,
     HttpClientModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    Ng2SearchPipeModule
   ],
   providers: [
     CargarScriptsService

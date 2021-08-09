@@ -5,13 +5,14 @@ import { Categorias } from '../Clases/categorias';
 import { Productos } from '../Clases/productos';
 import { Proveedores } from '../Clases/proveedores';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class ProductosService {
-  // apiCategoria="https://localhost:44382/api/categorias/";
-  apiProducto="https://localhost:44349/api/productos/";
-  // apiProveedor="https://localhost:44382/api/proveedores/";
+    apiCategoria="https://localhost:44382/api/categorias/";
+    apiProducto="https://localhost:44349/api/productos/";
+    apiProveedor="https://localhost:44382/api/proveedores/";
 
 
   //apiCategoria="https://apinuevo.azurewebsites.net/api/categorias/";

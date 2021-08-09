@@ -14,16 +14,16 @@ export class SesionGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    
+
 
       if(sessionStorage.getItem('sesion')==null)
-      { 
+      {
         this.router.navigate(['/nosotros']);
         return false;
-   
+
       }else{
         return true;
       }
   }
-  
+
 }
