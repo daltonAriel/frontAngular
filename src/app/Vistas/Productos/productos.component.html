@@ -29,8 +29,13 @@
 
 
     <div class="table-responsive mt-4    container" style="height: 505px;">
+      <br>
+      <div class="center" style="width: 500px">
+        <input *ngIf="productoObj.length > 0" class="form-control"  [(ngModel)]="busqueda" [ngModelOptions]="{standalone: true}" placeholder="Busqueda...">
+      </div>
+      <br>
 
-      <input *ngIf="productoObj.length > 0" class="form-control"  [(ngModel)]="busqueda" [ngModelOptions]="{standalone: true}" placeholder="Busqueda...">
+
       <table *ngIf="productoObj.length > 0" class="table table-bordered table-sm text-center">
         <thead class="bg-dark text-white ">
           <tr>
@@ -105,7 +110,7 @@
   <div class="modal-body">
 
     <p>Tipo Productor</p>
-    <select class="form-control" [(ngModel)]="tipoProductorIdNew" (change)="filtrarCategorias($event.target.value)">
+    <select class="form-control" [(ngModel)]="tipoProductorIdNew" (change)="filtrarCategorias($event.target.value)" [class.border-danger]="checkProductor == true">
       <option value=0 selected disabled hidden>Seleccione una Opcion</option>
       <option value={{item.idTipoProductores}} *ngFor="let item of tipoProductoresObj">
         {{item.nombre}}
@@ -115,7 +120,7 @@
     <br>
 
     <p>Categoria</p>
-    <select class="form-control" [(ngModel)]="categoriaIdNew" (change)="comprobarRaza($event.target.value)">
+    <select class="form-control" [(ngModel)]="categoriaIdNew" (change)="comprobarRaza($event.target.value)" [class.border-danger]="checkCategoria == true">
       <option value=0 selected disabled hidden>Seleccione una Opcion</option>
 
       <ng-container *ngFor="let item of categoriaFiltradoObj">
@@ -149,16 +154,16 @@
     <br>
 
     <p>Nombre</p>
-    <input type="text" class="form-control" [(ngModel)]="nombreNew">
+    <input type="text" class="form-control" [(ngModel)]="nombreNew" [class.border-danger]="checkNombre == true">
     <br>
 
     <p>Unidad</p>
-    <input type="text" class="form-control" [(ngModel)]="unidadNew">
+    <input type="text" class="form-control" [(ngModel)]="unidadNew" [class.border-danger]="checkUnidad == true">
     <br>
 
     <div *ngIf="tallaCheck == true">
       <p>Talla</p>
-      <input type="text" class="form-control" [(ngModel)]="tallaNew">
+      <input type="text" class="form-control" [(ngModel)]="tallaNew" [class.border-danger]="checkTalla == true">
       <br>
     </div>
 
@@ -185,7 +190,7 @@
   <div class="modal-body">
 
     <p>Tipo Productor</p>
-    <select class="form-control" [(ngModel)]="tipoProductorIdNew" (change)="filtrarCategorias($event.target.value); comprobarRaza()">
+    <select class="form-control" [(ngModel)]="tipoProductorIdNew" (change)="filtrarCategorias($event.target.value); comprobarRaza()" [class.border-danger]="checkProductor == true">
       <option value=0 selected disabled hidden>Seleccione una Opcion</option>
       <option value={{item.idTipoProductores}} *ngFor="let item of tipoProductoresObj">
         {{item.nombre}}
@@ -195,7 +200,7 @@
     <br>
 
     <p>Categoria</p>
-    <select class="form-control" [(ngModel)]="categoriaIdNew" (change)="comprobarRaza($event.target.value)">
+    <select class="form-control" [(ngModel)]="categoriaIdNew" (change)="comprobarRaza($event.target.value)" [class.border-danger]="checkCategoria == true">
       <option value=0 selected disabled hidden>Seleccione una Opcion</option>
 
       <ng-container *ngFor="let item of categoriaFiltradoObj">
@@ -229,17 +234,17 @@
     <br>
 
     <p>Nombre</p>
-    <input type="text" class="form-control" [(ngModel)]="nombreUpdate">
+    <input type="text" class="form-control" [(ngModel)]="nombreUpdate" [class.border-danger]="checkNombre == true">
     <br>
 
     <p>Unidad</p>
-    <input type="text" class="form-control" [(ngModel)]="unidadUpdate">
+    <input type="text" class="form-control" [(ngModel)]="unidadUpdate" [class.border-danger]="checkUnidad == true">
     <br>
 
 
     <div *ngIf="tallaCheck == true">
       <p>Talla</p>
-      <input type="text" class="form-control" [(ngModel)]="tallaUpdate">
+      <input type="text" class="form-control" [(ngModel)]="tallaUpdate" [class.border-danger]="checkTalla == true">
       <br>
     </div>
 

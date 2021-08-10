@@ -19,6 +19,14 @@ import Swal from 'sweetalert2';
   styleUrls: ['./productos.component.css'],
 })
 export class ProductosComponent implements OnInit {
+  ///
+  checkProductor: boolean = false;
+  checkCategoria: boolean = false;
+  checkNombre:boolean = false;
+  checkUnidad:boolean = false;
+  checkTalla:boolean = false;
+  ///
+
   busqueda;
   modalReference: NgbModalRef;
   closeResult: string;
@@ -146,15 +154,43 @@ export class ProductosComponent implements OnInit {
   }
 
   async guardar() {
+    ///validar selects
     if (
-      this.categoriaIdNew == 0 ||
-      this.categoriaIdNew == null ||
+      (this.categoriaIdNew == 0 ||
+      this.categoriaIdNew == null) &&(
       this.tipoProductorIdNew == 0 ||
-      this.tipoProductorIdNew == null
-    ) {
-      this.errorDatos();
+      this.tipoProductorIdNew == null)
+    ){
+      this.checkProductor = true;
+      this.checkCategoria = true;
       return;
     }
+    else{
+      this.checkProductor = false;
+      this.checkCategoria = false;
+    }
+    if (
+      this.tipoProductorIdNew == 0 ||
+      this.tipoProductorIdNew == null
+    ){
+      this.checkProductor = true;
+      return;
+    }
+    else{
+      this.checkProductor = false;
+    }
+    if (
+      this.categoriaIdNew == 0 ||
+      this.categoriaIdNew == null
+    ){
+      this.checkCategoria = true;
+      return;
+    }
+    else{
+      this.checkCategoria = false;
+    }
+    //validar selects fin
+
 
     let objProd: Productos = {
       idProductos: undefined,
@@ -170,21 +206,58 @@ export class ProductosComponent implements OnInit {
       objProd.descripcion = null;
       objProd.entrega = null;
     }
+
+
+    ///validar nombre unidad
+    if (
+      (objProd.nombreProducto == '' ||
+      objProd.nombreProducto == null) &&
+      (objProd.unidad == '' ||
+      objProd.unidad == null)
+    ) {
+      this.checkUnidad = true;
+      this.checkNombre = true;
+      return;
+    }
+    else{
+      this.checkUnidad = false;
+      this.checkNombre = false;
+    }
+
     if (
       objProd.nombreProducto == '' ||
-      objProd.nombreProducto == null ||
+      objProd.nombreProducto == null
+    ) {
+      this.checkNombre = true;
+      return;
+    }
+    else{
+      this.checkNombre = false;
+    }
+
+    if (
       objProd.unidad == '' ||
       objProd.unidad == null
     ) {
-      this.errorDatos();
+      this.checkUnidad = true;
       return;
     }
+    else{
+      this.checkUnidad = false;
+    }
+    /////
+
+
+
     if (this.tallaCheck == true) {
       objProd.descripcion = null;
       objProd.entrega = null;
       if (objProd.talla == '' || objProd.talla == null) {
-        this.errorDatos();
+        this.checkTalla = true;
         return;
+      }
+      else{
+        this.checkTalla = false;
       }
       await this.productosService.nuevoProducto(objProd).subscribe(
         (res) => {
@@ -274,15 +347,44 @@ export class ProductosComponent implements OnInit {
   }
 
   actualizarProd() {
+    ///validar selects
     if (
-      this.categoriaIdNew == 0 ||
-      this.categoriaIdNew == null ||
+      (this.categoriaIdNew == 0 ||
+      this.categoriaIdNew == null) &&(
       this.tipoProductorIdNew == 0 ||
-      this.tipoProductorIdNew == null
-    ) {
-      this.errorDatos();
+      this.tipoProductorIdNew == null)
+    ){
+      this.checkProductor = true;
+      this.checkCategoria = true;
       return;
     }
+    else{
+      this.checkProductor = false;
+      this.checkCategoria = false;
+    }
+
+    if (
+      this.tipoProductorIdNew == 0 ||
+      this.tipoProductorIdNew == null
+    ){
+      this.checkProductor = true;
+      return;
+    }
+    else{
+      this.checkProductor = false;
+    }
+
+    if (
+      this.categoriaIdNew == 0 ||
+      this.categoriaIdNew == null
+    ){
+      this.checkCategoria = true;
+      return;
+    }
+    else{
+      this.checkCategoria = false;
+    }
+    //validar selects fin
 
     let objProd: Productos = {
       idProductos: this.IDProducto,
@@ -299,23 +401,60 @@ export class ProductosComponent implements OnInit {
       objProd.descripcion = null;
       objProd.entrega = null;
     }
+
+
+
+    ///validar nombre unidad
+    if (
+      (objProd.nombreProducto == '' ||
+      objProd.nombreProducto == null) &&
+      (objProd.unidad == '' ||
+      objProd.unidad == null)
+    ) {
+      this.checkUnidad = true;
+      this.checkNombre = true;
+      return;
+    }
+    else{
+      this.checkUnidad = false;
+      this.checkNombre = false;
+    }
+
     if (
       objProd.nombreProducto == '' ||
-      objProd.nombreProducto == null ||
+      objProd.nombreProducto == null
+    ) {
+      this.checkNombre = true;
+      return;
+    }
+    else{
+      this.checkNombre = false;
+    }
+
+    if (
       objProd.unidad == '' ||
       objProd.unidad == null
     ) {
-      this.errorDatos();
+      this.checkUnidad = true;
       return;
     }
+    else{
+      this.checkUnidad = false;
+    }
+    /////
+
+
 
 
     if (this.tallaCheck == true) {
       objProd.descripcion = null;
       objProd.entrega = null;
       if (objProd.talla == '' || objProd.talla == null) {
-        this.errorDatos();
+        this.checkTalla = true;
         return;
+      }
+      else{
+        this.checkTalla = false;
       }
 
       this.productosService
@@ -394,6 +533,12 @@ export class ProductosComponent implements OnInit {
   }
 
   openModal(content) {
+    this.checkProductor = false;
+    this.checkCategoria = false;
+    this.checkNombre = false;
+    this.checkUnidad = false;
+    this.checkTalla = false;
+
     this.limpiar();
     this.tipoProductorIdNew = 0;
     this.categoriaIdNew = 0;
