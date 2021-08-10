@@ -38,7 +38,7 @@ export class NuevoProductoresComponent implements OnInit {
     correo: new FormControl('', Validators.email),
     edad: new FormControl('', Validators.required),
     sexo: new FormControl('', Validators.required),
-    cargo: new FormControl('', Validators.required),
+    // cargo: new FormControl('', Validators.required),
     longitud: new FormControl('', Validators.required),
     latitud: new FormControl('', Validators.required),
     web: new FormControl('', Validators.required),
@@ -46,7 +46,8 @@ export class NuevoProductoresComponent implements OnInit {
     detalleOrganizacion: new FormControl('', Validators.required),
     discapacidad: new FormControl('', Validators.required),
     detalleDiscapacidad: new FormControl('', Validators.required),
-    porcentajeDiscapacidad: new FormControl('', Validators.required)
+    porcentajeDiscapacidad: new FormControl('', Validators.required),
+    idTipoProductores : new FormControl('',  Validators.required)
   })
 
   constructor(
@@ -96,6 +97,19 @@ export class NuevoProductoresComponent implements OnInit {
   }
 
   guardar(obj: any) {
+    console.log(obj);
+    if (obj.organizacion == ""){
+      obj.organizacion = false;
+      // alert();
+      // console.log(obj.organizacion)
+    }
+
+    if (obj.discapacidad == ""){
+      obj.discapacidad = false;
+      obj.porcentajeDiscapacidad = 0;
+      // alert();
+      // console.log(obj.discapacidad)
+    }
 
     if (this.validarCedula(this.proved.get('cedula').value) == false) {
       Swal.fire({
@@ -109,7 +123,9 @@ export class NuevoProductoresComponent implements OnInit {
     }
 
     if (this.idProveedores == null) {
+
       this.proveedores.nuevo(obj).subscribe(res => {
+
         this.router.navigate(['/menu/listarProveedor']);
         Swal.fire("Proveedores", "Registro guardado con exito", "success");
       }, error => {

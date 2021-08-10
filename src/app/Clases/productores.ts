@@ -18,4 +18,5 @@ export interface Productores
     Discapacidad :boolean;
     DetalleDiscapacidad :string;
     PorcentajeDiscapacidad :string;
+    IdTipoProductores: number;
 }
