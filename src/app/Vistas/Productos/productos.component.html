@@ -32,7 +32,7 @@
 
       <input *ngIf="productoObj.length > 0" class="form-control"  [(ngModel)]="busqueda" [ngModelOptions]="{standalone: true}" placeholder="Busqueda...">
       <table *ngIf="productoObj.length > 0" class="table table-bordered table-sm text-center">
-        <thead class="bg-dark text-white ">
+        <thead class="bg-dark text-white " *ngIf="(productoObj | filter: busqueda).length != 0">
           <tr>
             <td>#</td>
             <td>Nombre</td>
@@ -76,7 +76,7 @@
         </tbody>
       </table>
 
-      <div *ngIf="productoObj.length == 0">
+      <div *ngIf="productoObj.length == 0 || (productoObj | filter: busqueda).length === 0">
         <h5 class="text-center" >No hay registros</h5>
       </div>
 
