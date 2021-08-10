@@ -28,14 +28,29 @@
   <div *ngIf="spinner==0" class="table-responsive mt-4    container" style="height: 530 px;">
 
 
-    <div class="table-responsive mt-4    container" style="height: 505px;">
-      <br>
-      <div class="center" style="width: 500px">
-        <input *ngIf="productoObj.length > 0" class="form-control"  [(ngModel)]="busqueda" [ngModelOptions]="{standalone: true}" placeholder="Busqueda...">
+
+    <div class="form-group ml-auto mr-auto col-4">
+
+
+      <div class="col mt-3">
+        <span>
+
+          <i class="fa fa-search"></i>
+
+        </span>
+
+        <input *ngIf="productoObj.length > 0" class="form-control" [(ngModel)]="busqueda"
+          [ngModelOptions]="{standalone: true}">
+
       </div>
-      <br>
 
 
+    </div>
+
+
+
+    <div class="table-responsive mt-4    container" style="height: 505px;">
+     
       <table *ngIf="productoObj.length > 0" class="table table-bordered table-sm text-center">
         <thead class="bg-dark text-white ">
           <tr>
@@ -51,7 +66,8 @@
 
         <tbody>
           <tr class="text-dark webkit-scrollbar," class="text-dark">
-          <tr *ngFor="let item of productoObj | filter:busqueda; let i=index;" class="text-dark webkit-scrollbar," class="text-dark">
+          <tr *ngFor="let item of productoObj | filter:busqueda; let i=index;" class="text-dark webkit-scrollbar,"
+            class="text-dark">
             <td><strong>{{i+1}}</strong></td>
 
             <td>{{item.nombreProducto}}</td>
@@ -82,7 +98,7 @@
       </table>
 
       <div *ngIf="productoObj.length == 0">
-        <h5 class="text-center" >No hay registros</h5>
+        <h5 class="text-center">No hay registros</h5>
       </div>
 
     </div>
@@ -110,7 +126,8 @@
   <div class="modal-body">
 
     <p>Tipo Productor</p>
-    <select class="form-control" [(ngModel)]="tipoProductorIdNew" (change)="filtrarCategorias($event.target.value)" [class.border-danger]="checkProductor == true">
+    <select class="form-control" [(ngModel)]="tipoProductorIdNew" (change)="filtrarCategorias($event.target.value)"
+      [class.border-danger]="checkProductor == true">
       <option value=0 selected disabled hidden>Seleccione una Opcion</option>
       <option value={{item.idTipoProductores}} *ngFor="let item of tipoProductoresObj">
         {{item.nombre}}
@@ -120,7 +137,8 @@
     <br>
 
     <p>Categoria</p>
-    <select class="form-control" [(ngModel)]="categoriaIdNew" (change)="comprobarRaza($event.target.value)" [class.border-danger]="checkCategoria == true">
+    <select class="form-control" [(ngModel)]="categoriaIdNew" (change)="comprobarRaza($event.target.value)"
+      [class.border-danger]="checkCategoria == true">
       <option value=0 selected disabled hidden>Seleccione una Opcion</option>
 
       <ng-container *ngFor="let item of categoriaFiltradoObj">
@@ -137,16 +155,16 @@
 
     <div *ngIf="razaCheck == true">
       <p>Razas</p>
-      <select class="form-control" [(ngModel)]="descripcionNew" >
+      <select class="form-control" [(ngModel)]="descripcionNew">
         <option value={{i}} *ngFor="let item of razas;let i=index">{{item}}</option>
       </select>
     </div>
 
     <br>
 
-    <div *ngIf="razaCheck == true" >
+    <div *ngIf="razaCheck == true">
       <p>Entrega</p>
-      <select class="form-control" [(ngModel)]="entregaNew" >
+      <select class="form-control" [(ngModel)]="entregaNew">
         <option value={{i}} *ngFor="let item of entregas;let i=index">{{item}}</option>
       </select>
     </div>
@@ -190,7 +208,8 @@
   <div class="modal-body">
 
     <p>Tipo Productor</p>
-    <select class="form-control" [(ngModel)]="tipoProductorIdNew" (change)="filtrarCategorias($event.target.value); comprobarRaza()" [class.border-danger]="checkProductor == true">
+    <select class="form-control" [(ngModel)]="tipoProductorIdNew"
+      (change)="filtrarCategorias($event.target.value); comprobarRaza()" [class.border-danger]="checkProductor == true">
       <option value=0 selected disabled hidden>Seleccione una Opcion</option>
       <option value={{item.idTipoProductores}} *ngFor="let item of tipoProductoresObj">
         {{item.nombre}}
@@ -200,7 +219,8 @@
     <br>
 
     <p>Categoria</p>
-    <select class="form-control" [(ngModel)]="categoriaIdNew" (change)="comprobarRaza($event.target.value)" [class.border-danger]="checkCategoria == true">
+    <select class="form-control" [(ngModel)]="categoriaIdNew" (change)="comprobarRaza($event.target.value)"
+      [class.border-danger]="checkCategoria == true">
       <option value=0 selected disabled hidden>Seleccione una Opcion</option>
 
       <ng-container *ngFor="let item of categoriaFiltradoObj">
@@ -217,16 +237,16 @@
 
     <div *ngIf="razaCheck == true">
       <p>Razas</p>
-      <select class="form-control" [(ngModel)]="descripcionNew" >
+      <select class="form-control" [(ngModel)]="descripcionNew">
         <option value={{i}} *ngFor="let item of razas;let i=index">{{item}}</option>
       </select>
     </div>
 
     <br>
 
-    <div *ngIf="razaCheck == true" >
+    <div *ngIf="razaCheck == true">
       <p>Entrega</p>
-      <select class="form-control" [(ngModel)]="entregaNew" >
+      <select class="form-control" [(ngModel)]="entregaNew">
         <option value={{i}} *ngFor="let item of entregas;let i=index">{{item}}</option>
       </select>
     </div>

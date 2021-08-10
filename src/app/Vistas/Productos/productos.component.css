@@ -1,0 +1,13 @@
+span{
+    position: absolute;
+    margin-left: 5px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    margin-top: 7px;
+  }
+  input{
+      
+    padding-left: 25px;
+  
+  }
