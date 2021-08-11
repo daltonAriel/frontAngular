@@ -139,7 +139,8 @@ export class NuevoProductoresComponent implements OnInit {
       })
     }
     else {
-      obj.idProveedor = this.idProveedores;
+      console.log(obj.idProductores)
+      obj.idProductores = this.idProveedores;
       obj.Cedula = this.proved.get('cedula')?.value;
       this.proveedores.editar(this.idProveedores, obj).subscribe(res => {
         Swal.fire({
