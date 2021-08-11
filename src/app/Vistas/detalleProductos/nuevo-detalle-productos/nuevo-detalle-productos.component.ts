@@ -6,6 +6,7 @@ import { Productores } from 'src/app/Clases/productores';
 import { Productos } from 'src/app/Clases/productos';
 import { DetalleCategoriasService } from 'src/app/Servicios/detalle-categorias.service';
 import Swal from 'sweetalert2';
+import { NgSelectConfig } from '@ng-select/ng-select';
 
 
 
@@ -18,11 +19,11 @@ export class NuevoDetalleProductosComponent implements OnInit {
 
   proved = new FormGroup({
 
-    idProductos: new FormControl('', Validators.required),
+    idProductos: new FormControl(null, Validators.required),
     stock: new FormControl('',[validate.valor]),
     precioUnidad: new FormControl('', [validate.valor]),
     precioDocena: new FormControl('', [validate.valor]),
-    idProductores: new FormControl('', Validators.required),
+    idProductores: new FormControl(null, Validators.required),
 
 
   });
@@ -31,8 +32,17 @@ export class NuevoDetalleProductosComponent implements OnInit {
   productorObj: Productores[] = [];
   productosObj: Productos[] = [];
   idDetalle:number=0;
+  numero:number=1;
 
-  constructor(private detalleCategoria: DetalleCategoriasService, private ra:ActivatedRoute,private router:Router) { }
+  constructor(   private config: NgSelectConfig,  private detalleCategoria: DetalleCategoriasService, private ra:ActivatedRoute,private router:Router) { 
+
+
+
+    this.config.notFoundText = 'Sin Coincidencias';
+    this.config.clearAllText='eliminar';
+
+
+  }
 
   ngOnInit(): void {
 
@@ -49,6 +59,7 @@ export class NuevoDetalleProductosComponent implements OnInit {
 
 
 
+
     if (this.idDetalle != null) {
       this.cargar(this.idDetalle);
 
@@ -60,6 +71,8 @@ export class NuevoDetalleProductosComponent implements OnInit {
   {
 
 
+
+   
 
 
 
