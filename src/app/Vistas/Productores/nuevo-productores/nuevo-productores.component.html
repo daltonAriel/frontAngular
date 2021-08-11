@@ -18,7 +18,7 @@
                 <div class="card mr-auto ml-auto col col-sm" style="width: 30rem; margin-top: 2em; margin-bottom: 2em; margin-left:em; ">
                     <div class="card-header">
                         <div class="text-center">
-                            <h3>Generales</h3>
+                            <h3>Datos Generales</h3>
                         </div>
                     </div>
 
@@ -78,11 +78,8 @@
                         <div class="row">
                             <div class="col">
                                 <label for="exampleInputEmail1" class=" text-black-50 fw-bold fst-italic">Cargo</label>
-                                <select class="form-control" aria-label="Default select example" formControlName='cargo'>
-                                    <option value="Masculino">Artesano</option>
-                                    <option value="Femenino">Agricultor</option>
-                                    <option value="Femenino">Ganadero</option>
-                                    <option value="Femenino">Microempresario</option>
+                                <select class="form-control" aria-label="Default select example" formControlName='idTipoProductores'>
+                                    <option value={{dato.idTipoProductores}} *ngFor="let dato of listaTipo">{{dato.nombre}}</option>
                                   </select>
                             </div>
 
@@ -104,14 +101,14 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                <label for="exampleInputEmail1" id="lat" class=" text-black-50 fw-bold fst-italic">Latitud</label>
-                                <input maxlength="10" formControlName="latitud" type="text" value="{{geo}}" class="form-control mb-2"> 
+                                <label for="exampleInputEmail1" class=" text-black-50 fw-bold fst-italic">Latitud</label>
+                                <input id="latitud" name="latitud" formControlName="latitud" type="text" class="form-control mb-2" [ngModel]="this.lat">  
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
-                                <label for="exampleInputEmail1" id="lat" class=" text-black-50 fw-bold fst-italic">Latitud</label>
-                                <input maxlength="10" formControlName="latitud" type="text" value="{{geo}}" class="form-control mb-2"> 
+                                <label for="exampleInputEmail1" class=" text-black-50 fw-bold fst-italic">Longitud</label>
+                                <input id="longitud" name="longitud" formControlName="longitud" type="text" class="form-control mb-2"  [ngModel]="this.lng"> 
                             </div>
                         </div>
                         <div id="mapa-mapbox" style="width: auto; height: 500px;">
@@ -138,10 +135,8 @@
         
                                     <div class="col">
                                         <div class="collapse multi-collapse text-center" id="multiCollapseExample1">
-                                            <label for="exampleInputEmail1"
-                                                class=" text-black-50 fw-bold fst-italic ">Detalle</label>
-                                            <input maxlength="500" formControlName="detalleOrganizacion" type="text"
-                                                class="form-control mb-2">
+                                            <label for="exampleInputEmail1" class=" text-black-50 fw-bold fst-italic ">Detalle</label>
+                                            <input maxlength="500" formControlName="detalleOrganizacion" type="text" class="form-control mb-2">
                                         </div>
         
                                     </div>
@@ -153,7 +148,7 @@
                                 <div class="form-check text-center">
                                     <input type="checkbox" class="form-check-input" data-toggle="collapse"
                                         href="#multiCollapseExample2" role="button" aria-expanded="false"
-                                        aria-controls="multiCollapseExample1" formControlName='discapacidad'>
+                                        aria-controls="multiCollapseExample1" formControlName='discapacidad' [defaultValue]="false" >
                                     <label class="form-check-label" for="exampleCheck1">Discapacidad</label>
         
                                     <div class="col">
@@ -180,7 +175,7 @@
 
                         <div class="text-center mt-3">
                             <button class="btn btn-primary mt-3 mr-5 col-4  " type="submit">Guardar</button>
-                            <button class="btn btn-secondary mt-3 col-4"[routerLink]="'/dashboard/listarProveedores'">Atras</button>
+                            <button class="btn btn-secondary mt-3 col-4">Atras</button>
                         </div>
 
                     </div>
