@@ -1,0 +1,16 @@
+
+
+::ng-deep .color {
+border-radius: 5%;
+border: 1px solid red;
+
+
+} 
+
+
+::ng-deep .colorS {
+    border-radius: 5%;
+    background-color: green;
+    border: 1px solid green;
+    
+    } 

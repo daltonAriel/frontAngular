@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -19,10 +20,13 @@ import { NuevoUsuarioComponent } from './Vistas/Usuarios/nuevo-usuario/nuevo-usu
 import { ListarUsuarioComponent } from './Vistas/Usuarios/listar-usuario/listar-usuario.component';
 import { ListarProductoresComponent } from './Vistas/Productores/listar-productores/listar-productores.component';
 import { NuevoProductoresComponent } from './Vistas/Productores/nuevo-productores/nuevo-productores.component';
-import {CargarScriptsService} from './Servicios/cargar-scripts.service';
+import { CargarScriptsService } from './Servicios/cargar-scripts.service';
 import { ListarDetalleProductosComponent } from './Vistas/detalleProductos/listar-detalle-productos/listar-detalle-productos.component';
 import { NuevoDetalleProductosComponent } from './Vistas/detalleProductos/nuevo-detalle-productos/nuevo-detalle-productos.component'
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { NgSelectModule } from '@ng-select/ng-select';
+
+
 
 @NgModule({
   declarations: [
@@ -51,7 +55,11 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     HttpClientModule,
     NgbModule,
     FormsModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,  
+    NgSelectModule,
+    RouterModule
+
+
   ],
   providers: [
     CargarScriptsService
