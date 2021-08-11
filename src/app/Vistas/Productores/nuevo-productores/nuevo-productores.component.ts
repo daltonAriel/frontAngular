@@ -100,6 +100,7 @@ export class NuevoProductoresComponent implements OnInit {
     console.log(obj);
     if (obj.organizacion == ""){
       obj.organizacion = false;
+      obj.detalleOrganizacion =""
       // alert();
       // console.log(obj.organizacion)
     }
