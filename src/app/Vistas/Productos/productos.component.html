@@ -119,8 +119,10 @@
 <ng-template #nuevo let-modal>
   <div class="modal-header">
     <h4 class="modal-title">Nuevo Producto</h4>
+        
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
+    
+      <label style="cursor: pointer;" >x</label>
     </button>
   </div>
   <div class="modal-body">
