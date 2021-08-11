@@ -30,34 +30,49 @@
                     <div class="row">
                         <div class="col">
                             <label for="exampleInputEmail1" class=" text-black-50 fw-bold fst-italic">Cedula</label>
-                            <input maxlength="10" formControlName="cedula" type="text" class="form-control mb-2">
+                            <input maxlength="10" formControlName="cedula" type="text" class="form-control mb-2"
+                            [class.border-danger]="proved.get('cedula')!.touched && proved.get('cedula')?.invalid"
+                            [class.border-success]="proved.get('cedula')!.touched && proved.get('cedula')?.valid" >
                         </div>
                         <div class="col">
                             <label for="exampleInputEmail1" class=" text-black-50 fw-bold fst-italic">Nombres</label>
-                            <input formControlName="nombres" type="text" class="form-control mb-2">
+                            <input formControlName="nombres" type="text" class="form-control mb-2" 
+                            [class.border-danger]="proved.get('nombres')!.touched && proved.get('nombres')?.invalid"
+                            [class.border-success]="proved.get('nombres')!.touched && proved.get('nombres')?.valid" >
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col">
                             <label for="exampleInputEmail1" class=" text-black-50 fw-bold fst-italic">Apellidos</label>
-                            <input formControlName="apellidos" type="text" class="form-control">
+                            <input formControlName="apellidos" type="text" class="form-control" 
+                            [class.border-danger]="proved.get('apellidos')!.touched && proved.get('apellidos')?.invalid"
+                            [class.border-success]="proved.get('apellidos')!.touched && proved.get('apellidos')?.valid" >
                         </div>
                         <div class="col">
                             <label for="exampleInputEmail1" class=" text-black-50 fw-bold fst-italic">Direccion</label>
-                            <input maxlength="15" formControlName="direccion" type="text" class="form-control">
+                            <input maxlength="15" formControlName="direccion" type="text" class="form-control"
+                            [class.border-danger]="proved.get('direccion')!.touched && proved.get('direccion')?.invalid"
+                            [class.border-success]="proved.get('direccion')!.touched && proved.get('direccion')?.valid"
+                            >
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col">
                             <label for="exampleInputEmail1" class=" text-black-50 fw-bold fst-italic">Telefono</label>
-                            <input formControlName="telefono" type="text" class="form-control">
+                            <input formControlName="telefono" type="text" class="form-control"
+                            [class.border-danger]="proved.get('telefono')!.touched && proved.get('telefono')?.invalid"
+                            [class.border-success]="proved.get('telefono')!.touched && proved.get('telefono')?.valid"
+                            >
 
                         </div>
                         <div class="col">
                             <label for="exampleInputEmail1" class=" text-black-50 fw-bold fst-italic">Correo</label>
-                            <input maxlength="100" formControlName="correo" type="text" class="form-control">
+                            <input maxlength="100" formControlName="correo" type="text" class="form-control"
+                            [class.border-info]="proved.get('correo')!.touched && proved.get('correo')?.invalid"
+                            [class.border-info]="proved.get('correo')!.touched && proved.get('correo')?.valid"
+                            >
 
                         </div>
                     </div>
@@ -65,11 +80,17 @@
                     <div class="row">
                         <div class="col">
                             <label for="exampleInputEmail1" class=" text-black-50 fw-bold fst-italic">Edad</label>
-                            <input formControlName="edad" type="number" class="form-control">
+                            <input formControlName="edad" type="number" class="form-control"
+                            [class.border-danger]="proved.get('edad')!.touched && proved.get('edad')?.invalid"
+                            [class.border-success]="proved.get('edad')!.touched && proved.get('edad')?.valid"
+                            >
                         </div>
                         <div class="col">
                             <label for="exampleInputEmail1" class=" text-black-50 fw-bold fst-italic">Sexo</label>
-                            <select class="form-control" aria-label="Default select example" formControlName='sexo'>
+                            <select class="form-control" aria-label="Default select example" formControlName='sexo'
+                            [class.border-danger]="proved.get('sexo')!.touched && proved.get('sexo')?.invalid"
+                            [class.border-success]="proved.get('sexo')!.touched && proved.get('sexo')?.valid"
+                            >
                                 <option value="Masculino">Masculino</option>
                                 <option value="Femenino">Femenino</option>
                             </select>
@@ -79,8 +100,10 @@
                     <div class="row">
                         <div class="col">
                             <label for="exampleInputEmail1" class=" text-black-50 fw-bold fst-italic">Cargo</label>
-                            <select class="form-control" aria-label="Default select example"
-                                formControlName='idTipoProductores'>
+                            <select class="form-control" aria-label="Default select example" formControlName='idTipoProductores'
+                            [class.border-danger]="proved.get('idTipoProductores')!.touched && proved.get('idTipoProductores')?.invalid"
+                            [class.border-success]="proved.get('idTipoProductores')!.touched && proved.get('idTipoProductores')?.valid"
+                            >
                                 <option value={{dato.idTipoProductores}} *ngFor="let dato of listaTipo">{{dato.nombre}}
                                 </option>
                             </select>
@@ -88,7 +111,10 @@
 
                         <div class="col">
                             <label for="exampleInputEmail1" class=" text-black-50 fw-bold fst-italic">Web</label>
-                            <input maxlength="15" formControlName="web" type="text" class="form-control">
+                            <input maxlength="15" formControlName="web" type="text" class="form-control"
+                            [class.border-info]="proved.get('web')!.touched && proved.get('web')?.invalid"
+                            [class.border-info]="proved.get('web')!.touched && proved.get('web')?.valid"
+                            >
                         </div>
                     </div>
                 </div>
@@ -107,14 +133,14 @@
                         <div class="col">
                             <label for="exampleInputEmail1" class=" text-black-50 fw-bold fst-italic">Latitud</label>
                             <input id="latitud" name="latitud" formControlName="latitud" type="text"
-                                class="form-control mb-2" [ngModel]="this.lat">
+                                class="form-control mb-2" [ngModel]="this.lat" readonly>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
                             <label for="exampleInputEmail1" class=" text-black-50 fw-bold fst-italic">Longitud</label>
                             <input id="longitud" name="longitud" formControlName="longitud" type="text"
-                                class="form-control mb-2" [ngModel]="this.lng">
+                                class="form-control mb-2" [ngModel]="this.lng" readonly>
                         </div>
                     </div>
                     <div id="mapa-mapbox" style="width: auto; height: 500px;">
@@ -144,8 +170,10 @@
                                     <div class="collapse multi-collapse text-center" id="multiCollapseExample1">
                                         <label for="exampleInputEmail1"
                                             class=" text-black-50 fw-bold fst-italic ">Detalle</label>
-                                        <input maxlength="500" formControlName="detalleOrganizacion" type="text"
-                                            class="form-control mb-2">
+                                        <input maxlength="500" formControlName="detalleOrganizacion" type="text" class="form-control mb-2"
+                                        [class.border-info]="proved.get('detalleOrganizacion')!.touched && proved.get('detalleOrganizacion')?.invalid"
+                                        [class.border-info]="proved.get('detalleOrganizacion')!.touched && proved.get('detalleOrganizacion')?.valid"
+                                        >
                                     </div>
 
                                 </div>
@@ -165,15 +193,19 @@
                                     <div class="collapse multi-collapse text-center" id="multiCollapseExample2">
                                         <label for="exampleInputEmail1"
                                             class=" text-black-50 fw-bold fst-italic ">Detalle</label>
-                                        <input maxlength="500" formControlName="detalleDiscapacidad" type="text"
-                                            class="form-control mb-2">
+                                        <input maxlength="500" formControlName="detalleDiscapacidad" type="text" class="form-control mb-2"
+                                        [class.border-danger]="proved.get('detalleDiscapacidad')!.touched && proved.get('detalleDiscapacidad')?.invalid"
+                                        [class.border-success]="proved.get('detalleDiscapacidad')!.touched && proved.get('detalleDiscapacidad')?.valid"
+                                        >
                                     </div>
 
                                     <div class="collapse multi-collapse text-center" id="multiCollapseExample2">
                                         <label for="exampleInputEmail1"
                                             class=" text-black-50 fw-bold fst-italic ">Porcentaje</label>
-                                        <input maxlength="500" formControlName="porcentajeDiscapacidad" type="text"
-                                            class="form-control mb-2">
+                                        <input maxlength="500" formControlName="porcentajeDiscapacidad" type="text" class="form-control mb-2"
+                                        [class.border-danger]="proved.get('detalleDiscapacidad')!.touched && proved.get('detalleDiscapacidad')?.invalid"
+                                        [class.border-success]="proved.get('detalleDiscapacidad')!.touched && proved.get('detalleDiscapacidad')?.valid"
+                                        >
                                     </div>
 
                                 </div>
@@ -185,13 +217,11 @@
 
                     <div class="text-center mt-3">
                         <button class="btn btn-primary mt-3 mr-5 col-4  " type="submit">Guardar</button>
-                        <button class="btn btn-secondary mt-3 col-4">Atras</button>
+                        <button class="btn btn-secondary mt-3 col-4" [routerLink]="'/menu/listarProveedor'" >Atras</button>
                     </div>
 
                 </div>
             </div>
-
-
         </form>
     </div>
 
