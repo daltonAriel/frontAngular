@@ -107,14 +107,14 @@
                         <div class="col">
                             <label for="exampleInputEmail1" class=" text-black-50 fw-bold fst-italic">Latitud</label>
                             <input id="latitud" name="latitud" formControlName="latitud" type="text"
-                                class="form-control mb-2" [ngModel]="this.lat">
+                                class="form-control mb-2" [ngModel]="this.lat" readonly>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
                             <label for="exampleInputEmail1" class=" text-black-50 fw-bold fst-italic">Longitud</label>
                             <input id="longitud" name="longitud" formControlName="longitud" type="text"
-                                class="form-control mb-2" [ngModel]="this.lng">
+                                class="form-control mb-2" [ngModel]="this.lng" readonly>
                         </div>
                     </div>
                     <div id="mapa-mapbox" style="width: auto; height: 500px;">
@@ -185,13 +185,11 @@
 
                     <div class="text-center mt-3">
                         <button class="btn btn-primary mt-3 mr-5 col-4  " type="submit">Guardar</button>
-                        <button class="btn btn-secondary mt-3 col-4">Atras</button>
+                        <button class="btn btn-secondary mt-3 col-4" [routerLink]="'/menu/listarProveedor'" >Atras</button>
                     </div>
 
                 </div>
             </div>
-
-
         </form>
     </div>
 
