@@ -35,7 +35,7 @@ export class NuevoProductoresComponent implements OnInit {
     apellidos: new FormControl('', Validators.required),
     direccion: new FormControl('', Validators.required),
     telefono: new FormControl('', Validators.required),
-    correo: new FormControl('', Validators.email),
+    correo: new FormControl(''),
     edad: new FormControl('', Validators.required),
     sexo: new FormControl('', Validators.required),
     // cargo: new FormControl('', Validators.required),
