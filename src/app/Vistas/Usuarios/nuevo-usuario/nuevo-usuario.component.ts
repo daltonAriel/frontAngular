@@ -48,7 +48,6 @@ export class NuevoUsuarioComponent implements OnInit {
     if(this.idCliente==null)
     {
 
-
       if(this.empleados.invalid)
       {
 
@@ -57,13 +56,8 @@ export class NuevoUsuarioComponent implements OnInit {
 
       }
 
-
-  
-        
-
       this.clientes.cedula(this.empleados.get('cedula').value).subscribe(res=>{
          
-
         if (res==null)
         {
           Swal.fire("Usuarios","Cedula Incorrecta","warning");
@@ -82,7 +76,7 @@ export class NuevoUsuarioComponent implements OnInit {
 
             this.clientes.nuevo(obj).subscribe(res=>{
 
-        this.router.navigate(['/menu/listarUsuario']);
+        this.router.navigate(['/menu/listarProveedor']);
         Swal.fire("Usuarios","Registro guardado con exito","success");
   
   

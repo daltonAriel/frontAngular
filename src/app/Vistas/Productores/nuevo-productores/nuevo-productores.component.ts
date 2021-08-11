@@ -24,8 +24,8 @@ export class NuevoProductoresComponent implements OnInit {
   lng: any;
   chb = false;
 
-  listaTipo : any[]=[];
-  
+  listaTipo: any[] = [];
+
   tipoProductoresObj: tipoProductores[] = [];
 
   proved = new FormGroup({
@@ -41,13 +41,13 @@ export class NuevoProductoresComponent implements OnInit {
     // cargo: new FormControl('', Validators.required),
     longitud: new FormControl('', Validators.required),
     latitud: new FormControl('', Validators.required),
-    web: new FormControl('', Validators.required),
-    organizacion: new FormControl('', Validators.required),
-    detalleOrganizacion: new FormControl('', Validators.required),
-    discapacidad: new FormControl('', Validators.required),
-    detalleDiscapacidad: new FormControl('', Validators.required),
-    porcentajeDiscapacidad: new FormControl('', Validators.required),
-    idTipoProductores : new FormControl('',  Validators.required)
+    web: new FormControl(''),
+    organizacion: new FormControl(''),
+    detalleOrganizacion: new FormControl(''),
+    discapacidad: new FormControl(''),
+    detalleDiscapacidad: new FormControl(''),
+    porcentajeDiscapacidad: new FormControl(''),
+    idTipoProductores: new FormControl('', Validators.required)
   })
 
   constructor(
@@ -56,13 +56,13 @@ export class NuevoProductoresComponent implements OnInit {
     private ra: ActivatedRoute,
     private _cargarScripts: CargarScriptsService,
     private element: ElementRef,
-    private tipoProductoresService : TipoProductoresService
+    private tipoProductoresService: TipoProductoresService
   ) {
     this.idProveedores = this.ra.snapshot.params.id;
     _cargarScripts.carga(["mapa"]);
   }
 
-  
+
 
   mapa: Mapboxgl.Map;
 
@@ -101,16 +101,13 @@ export class NuevoProductoresComponent implements OnInit {
     if (obj.organizacion == ""){
       obj.organizacion = false;
       obj.detalleOrganizacion =""
-      // alert();
-      // console.log(obj.organizacion)
     }
 
     if (obj.discapacidad == ""){
       obj.discapacidad = false;
       obj.porcentajeDiscapacidad = 0;
-      // alert();
-      // console.log(obj.discapacidad)
     }
+
 
     if (this.validarCedula(this.proved.get('cedula').value) == false) {
       Swal.fire({
@@ -124,25 +121,17 @@ export class NuevoProductoresComponent implements OnInit {
     }
 
     if (this.idProveedores == null) {
-
       this.proveedores.nuevo(obj).subscribe(res => {
-
         this.router.navigate(['/menu/listarProveedor']);
         Swal.fire("Proveedores", "Registro guardado con exito", "success");
-      }, error => {
-        Swal.fire({
-          position: 'center',
-          icon: 'error',
-          title: 'Ha ocurrido un error',
-          showConfirmButton: false,
-          timer: 1500,
-        }), console.log(obj)
-      })
+      }, error => {           
+        Swal.fire("Productores","Ha ocurrido un error","warning");
+        return})
     }
     else {
       obj.idProductores = this.idProveedores;
       obj.Cedula = this.proved.get('cedula')?.value;
-     
+
       this.proveedores.editar(this.idProveedores, obj).subscribe(res => {
         Swal.fire({
           position: 'center',
@@ -166,6 +155,56 @@ export class NuevoProductoresComponent implements OnInit {
       })
     }
   }
+
+
+  // guardar(obj: any) {
+
+
+  //   if (this.idProveedores == null){
+
+  //     if (obj.organizacion == "") {
+  //       obj.organizacion = false;
+  //       obj.detalleOrganizacion = ""
+  //     }
+  
+  //     if (obj.discapacidad == "") {
+  //       obj.discapacidad = false;
+  //       obj.porcentajeDiscapacidad = 0;
+  //     }
+      
+  //     // if(this.proved.invalid){ Swal.fire("Productores","Todos los campos son requeridos","warning"); console.log(obj); return}
+
+  //     this.proveedores.cedula(this.proved.get('cedula').value).subscribe(res=>{
+         
+  //       if (res==null)
+  //       {
+  //         Swal.fire("Usuarios","Cedula Incorrecta","warning");
+  //         return
+  //       }
+    
+  //       if (res==true)
+  //       {
+  //         Swal.fire("Usuarios","Esta cedula ya se encuentra registrada","warning");
+  //         return
+  //       }
+
+  //       if (res==false)
+  //       {
+
+
+  //           this.proveedores.nuevo(obj).subscribe(res=>{
+
+  //       this.router.navigate(['/menu/listarUsuario']);
+  //       Swal.fire("Proveedores","Registro guardado con exito","success");
+   
+  //     },error=>alert("Error al insertar el registro"))
+          
+  //       }
+  //     }, error=>{
+  //       alert("error..."+error);
+  //     });
+  //   }
+  // }
 
   validarCedula(_cedula: any) {
     var total = 0;
@@ -198,9 +237,9 @@ export class NuevoProductoresComponent implements OnInit {
       this.proved.patchValue(Object.assign({}, res));
     });
   }
-  
-  llenarTProductores(){
-    this.tipoProductoresService.listar().subscribe(res=>{
+
+  llenarTProductores() {
+    this.tipoProductoresService.listar().subscribe(res => {
       this.listaTipo = res;
     })
   }
