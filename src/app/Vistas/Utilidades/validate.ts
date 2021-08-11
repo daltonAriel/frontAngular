@@ -9,11 +9,6 @@ export class validate {
         
     
 
-        if(String(str).charAt(0)=="0" )
-        {
-           return {valor:true};
-        }
-
         if(String(str).charAt(0)=="n" )
         {
            return {valor:true};
