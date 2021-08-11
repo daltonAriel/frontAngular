@@ -52,7 +52,7 @@
     <div class="table-responsive mt-4    container" style="height: 505px;">
      
       <table *ngIf="productoObj.length > 0" class="table table-bordered table-sm text-center">
-        <thead class="bg-dark text-white ">
+        <thead class="bg-dark text-white " *ngIf="(productoObj | filter: busqueda).length != 0">
           <tr>
             <td>#</td>
             <td>Nombre</td>
@@ -97,8 +97,8 @@
         </tbody>
       </table>
 
-      <div *ngIf="productoObj.length == 0">
-        <h5 class="text-center">No hay registros</h5>
+      <div *ngIf="productoObj.length == 0 || (productoObj | filter: busqueda).length === 0">
+        <h5 class="text-center" >No Existen Registros</h5>
       </div>
 
     </div>
