@@ -13,7 +13,9 @@
 </div>
 
 
-<body style="background-color: #F8F9FC;">
+
+
+
 
 
 
@@ -29,7 +31,7 @@
 
 
 
-    <div class="form-group ml-auto mr-auto col-4">
+    <div class="form-group ms-auto me-auto col-4">
 
 
       <div class="col mt-3">
@@ -47,9 +49,17 @@
 
     </div>
 
+      
+    <div class="text-center mt-3 mb-2" style="color: green; font-size: 1.2rem;">
+      <label>Total </label>   <strong >  {{productoObj.length}} </strong>
+    </div>
 
 
     <div class="table-responsive mt-4    container" style="height: 505px;">
+
+
+   
+
      
       <table *ngIf="productoObj.length > 0" class="table table-bordered table-sm text-center">
         <thead class="bg-dark text-white " *ngIf="(productoObj | filter: busqueda).length != 0">
@@ -111,19 +121,22 @@
     </div>
   </div>
 
-</body>
+
+
+  
 
 
 
+
+
+
+</html>
 
 <ng-template #nuevo let-modal>
   <div class="modal-header">
     <h4 class="modal-title">Nuevo Producto</h4>
         
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-    
-      <label style="cursor: pointer;" >x</label>
-    </button>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
   </div>
   <div class="modal-body">
 
@@ -203,9 +216,7 @@
 <ng-template #actualizar let-modal>
   <div class="modal-header">
     <h4 class="modal-title">Actualizr Producto</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
   </div>
   <div class="modal-body">
 
@@ -283,4 +294,4 @@
 
 
 
-</html>
+
