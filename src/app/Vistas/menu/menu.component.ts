@@ -19,10 +19,10 @@ export class MenuComponent implements OnInit {
 
   salir() {
 
-    sessionStorage.clear();
-    this.router.navigate(['/nosotros'])
-    location.reload();
-    
+    sessionStorage.clear();   
+    localStorage.clear();
+    this.router.navigate(['/login'])
+    location.reload();    
   }
 
 

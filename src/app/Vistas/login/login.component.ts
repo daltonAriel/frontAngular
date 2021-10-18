@@ -33,7 +33,18 @@ export class LoginComponent implements OnInit {
     this.spinner=1;
     this.clientes.login(cliente.usuario, cliente.contrasena).subscribe(res => {
       if (res == "") {
-        Swal.fire("Login", "Credenciales Incorrectas", "warning");
+        
+
+        Swal.fire({
+          icon: 'warning',
+          title: 'Login',
+          text: 'Credenciales Incorrectas',
+          showConfirmButton: true,
+          confirmButtonText: 'Aceptar',
+          confirmButtonColor: "#29A05B",
+         
+         
+        })
         this.spinner=0;
 
         return
@@ -43,6 +54,12 @@ export class LoginComponent implements OnInit {
         this.spinner = 0;
         sessionStorage.setItem('sesion', JSON.stringify(res));
         this.router.navigate(['/menu']);
+
+        setTimeout(() => {
+          window.location.reload();
+          
+        }, 100);
+      
       
       }
 
@@ -56,6 +73,8 @@ export class LoginComponent implements OnInit {
 
 
     }).add(() => {
+
+   
  
      });
 

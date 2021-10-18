@@ -18,7 +18,7 @@ export class SesionGuard implements CanActivate {
 
       if(sessionStorage.getItem('sesion')==null)
       {
-        this.router.navigate(['/nosotros']);
+        this.router.navigate(['/login']);
         return false;
 
       }else{
