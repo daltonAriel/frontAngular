@@ -41,16 +41,11 @@
 
 
 
-<div class="container-fluid  col-8  col-sm-6  col-lg-4  mt-3">
-    <div class="row">
 
-        <!-- <input  [(ngModel)]="busqueda" (keyup)="buscador($event)"  name="buscar" id="buscar" type="text" class="form-control " aria-describedby="emailHelp"
-                placeholder="Buscar Proveedor"> -->
-
-    </div>
-
-
-</div>
+<div class="text-center mt-3" style="color: green; font-size: 1.2rem;">
+     <label>Total </label>   <strong >  {{clienteObj.length}} </strong>
+ </div>
+ 
 
 
 <div *ngIf="spinner==0" class="table-responsive mt-4  container" style="height: 400px;">

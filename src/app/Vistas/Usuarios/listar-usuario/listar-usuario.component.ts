@@ -12,6 +12,7 @@ import Swal from 'sweetalert2';
 export class ListarUsuarioComponent implements OnInit {
   clienteObj:Usuarios[]=[];
   spinner:Number=0;
+  
 
   constructor(
     private usuarios : UsuariosService
