@@ -60,8 +60,8 @@ export class ListarUsuarioComponent implements OnInit {
       title: '¿Esta seguro que desea eliminar?',
       text: " este registro se eliminará permanentemente",
       icon: 'warning',
+      confirmButtonColor: "#29A05B",
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       cancelButtonText: 'Cancelar',
       confirmButtonText: 'Aceptar'

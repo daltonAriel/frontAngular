@@ -42,7 +42,7 @@ export class ListarProductoresComponent implements OnInit {
       text: " este registro se eliminará permanentemente",
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
+      confirmButtonColor: "#29A05B",
       cancelButtonColor: '#d33',
       cancelButtonText: 'Cancelar',
       confirmButtonText: 'Aceptar'
