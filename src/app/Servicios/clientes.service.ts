@@ -7,8 +7,7 @@ import { Clientes } from '../Clases/clientes';
   providedIn: 'root'
 })
 export class ClientesService {
- api="https://localhost:44349/api/clientes/";
-//api="https://apinuevo.azurewebsites.net/api/clientes/";
+ api="http://raphaelrod-001-site1.itempurl.com/api/clientes/";
   constructor(private http:HttpClient) { }
 
   login(usuario:any,contrasena:any)

@@ -8,16 +8,19 @@
     <title>Document</title>
 </head>
 
-<body style="background-color: #F8F9FC;">
+
 
 
     
-    <div class="card mr-auto ml-auto col col-sm" style="width: 30rem; ">
+    <div class="card ms-auto shadow-lg me-auto col col-sm" style="width: 30rem; height: 25rem; ">
 
-        <div class="card-header">
-            <div class="text-center">
-                <h3>Nuevo Usuario</h3>
+        <div class="card-header" style="background-color:  #4c4a4a !important ;">
+
+            <div class="text-center" >
+                <h3 style="color: #fff;">Nuevo Usuario</h3>
             </div>
+
+
         </div>
 
         <div class="card-body ">
@@ -37,7 +40,7 @@
                         maxlength="10"
                         onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" 
                         
-                        [class.border-danger]="empleados.get('cedula')!.touched && empleados.get('cedula')?.invalid"
+                        [class.is-valid]="empleados.get('cedula')!.touched && empleados.get('cedula')?.invalid"
                         [class.border-success]="empleados.get('cedula')!.touched && empleados.get('cedula')?.valid"
                         
                         
@@ -163,8 +166,8 @@ direccion
      
                     
               
-            <div class="text-center">
-              <button class="btn btn-primary mt-3 col-12 col-sm-3 mr-3">Guardar</button>
+            <div class="text-center mt-3">
+              <button class="btn btn-primary mt-3 col-12 col-sm-3 me-3">Guardar</button>
               <button class="btn btn-secondary mt-3 col-12 col-sm-3" [routerLink]="'/menu/listarUsuario'" >Atras</button>
             </div>
 
@@ -182,7 +185,6 @@ direccion
 
 
 
-</body>
 
 </html>
 

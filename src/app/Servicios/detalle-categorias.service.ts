@@ -10,9 +10,11 @@ import { Productores } from '../Clases/productores';
 })
 export class DetalleCategoriasService {
 
-  api="https://localhost:44349/api/detalleCategorias/";
-  apiProductor="https://localhost:44349/api/productores/";
-  apiProductos="https://localhost:44349/api/productos/";
+  api="http://raphaelrod-001-site1.itempurl.com/api/detalleCategorias/";
+  apiProductor="http://raphaelrod-001-site1.itempurl.com/api/productores/";
+  apiProductos="http://raphaelrod-001-site1.itempurl.com/api/productos/";
+
+
 
   constructor(
     

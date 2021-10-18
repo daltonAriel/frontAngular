@@ -35,13 +35,12 @@ export class NuevoProductoresComponent implements OnInit {
     apellidos: new FormControl('', Validators.required),
     direccion: new FormControl('', Validators.required),
     telefono: new FormControl('', Validators.required),
-    correo: new FormControl(''),
+    correo: new FormControl('',[Validators.required, Validators.email]),
     edad: new FormControl('', Validators.required),
     sexo: new FormControl('', Validators.required),
-    // cargo: new FormControl('', Validators.required),
     longitud: new FormControl('', Validators.required),
     latitud: new FormControl('', Validators.required),
-    web: new FormControl(''),
+    paginaWeb: new FormControl(''),
     organizacion: new FormControl(''),
     detalleOrganizacion: new FormControl(''),
     discapacidad: new FormControl(''),
@@ -64,15 +63,16 @@ export class NuevoProductoresComponent implements OnInit {
 
 
 
-  mapa: Mapboxgl.Map;
+    mapa: Mapboxgl.Map;
+
 
   ngOnInit(): void {
     (Mapboxgl as any).accessToken = environment.mapboxKey;
     this.mapa = new Mapboxgl.Map({
-      container: 'mapa-mapbox', // container id
+      container: 'mapa-mapbox',
       style: 'mapbox://styles/mapbox/streets-v11',
-      center: [-78.6613343, -1.4190227], // starting position
-      zoom: 15 // starting zoom
+      center: [-78.6613343, -1.4190227], 
+      zoom: 15 
     });
     this.crearMarcador(-78.6613343, -1.4190227);
     if (this.idProveedores != null) {
@@ -97,7 +97,7 @@ export class NuevoProductoresComponent implements OnInit {
   }
 
   guardar(obj: any) {
-    console.log(obj);
+
     if (obj.organizacion == ""){
       obj.organizacion = false;
       obj.detalleOrganizacion =""
@@ -122,11 +122,16 @@ export class NuevoProductoresComponent implements OnInit {
 
     if (this.idProveedores == null) {
       this.proveedores.nuevo(obj).subscribe(res => {
+
         this.router.navigate(['/menu/listarProveedor']);
         Swal.fire("Proveedores", "Registro guardado con exito", "success");
+
       }, error => {           
+
         Swal.fire("Productores","Ha ocurrido un error","warning");
-        return})
+        return
+      
+      })
     }
     else {
       obj.idProductores = this.idProveedores;
@@ -229,13 +234,19 @@ export class NuevoProductoresComponent implements OnInit {
         return false;
       }
     }
-    console.log(false);
+   
     return false;
   }
   cargar(id: number) {
+
+ 
+
     this.proveedores.cargar(id).subscribe(res => {
+
+      console.log(res);
       this.proved.patchValue(Object.assign({}, res));
     });
+
   }
 
   llenarTProductores() {

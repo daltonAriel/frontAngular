@@ -22,7 +22,6 @@ export class NuevoDetalleProductosComponent implements OnInit {
     idProductos: new FormControl(null, Validators.required),
     stock: new FormControl('',[validate.valor]),
     precioUnidad: new FormControl('', [validate.valor]),
-    precioDocena: new FormControl('', [validate.valor]),
     idProductores: new FormControl(null, Validators.required),
 
 

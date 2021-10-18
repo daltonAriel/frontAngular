@@ -49,7 +49,6 @@ export class ListarUsuarioComponent implements OnInit {
   
     this.usuarios.listar().subscribe(res=>{
       this.clienteObj=res;
-      console.log(this.clienteObj)
       this.spinner=0;
     },error=>alert("Error al listar"))
   }

@@ -24,16 +24,21 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.css",
-              "./src/app/plantilla/vendor/fontawesome-free/css/all.min.css",
-              "./src/app/plantilla/css/sb-admin-2.css"
+
+              "./src/app/plantilla/sapMocha/css/app.css",
+              "./src/app/plantilla/vendor/fontawesome-free/css/all.min.css"
+
+            
+  
+
+      
+
             ],
             "scripts": [
-              "./src/app/Vistas/nosotros/script.js",
-              "./src/app/plantilla/vendor/jquery/jquery.js",
-              "./src/app/plantilla/vendor/bootstrap/js/bootstrap.bundle.min.js",
-              "./src/app/plantilla/js/sb-admin-2.js"
+
+              "./src/app/plantilla/sapMocha/js/app.js"
+
+              
            
             ]
           },

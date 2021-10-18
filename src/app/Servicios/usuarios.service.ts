@@ -7,7 +7,7 @@ import { Usuarios } from '../Clases/usuarios';
   providedIn: 'root'
 })
 export class UsuariosService {
-  api="https://localhost:44349/api/usuarios/";
+  api="http://raphaelrod-001-site1.itempurl.com/api/usuarios/";
   constructor(
     private http:HttpClient
   ) { }

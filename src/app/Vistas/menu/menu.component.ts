@@ -11,20 +11,17 @@ export class MenuComponent implements OnInit {
   constructor(private router:Router) { }
 
   ngOnInit(): void {
+
     this.sesion = JSON.parse(sessionStorage.getItem('sesion'));
-
-    console.log(this.sesion[0].nombres  );
-
-
+   
   }
 
   salir() {
 
-
-
     sessionStorage.clear();
     this.router.navigate(['/nosotros'])
     location.reload();
+    
   }
 
 

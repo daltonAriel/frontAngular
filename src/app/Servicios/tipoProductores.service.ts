@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class TipoProductoresService {
-  api="https://localhost:44349/api/tipoProductores/";
+  api="http://raphaelrod-001-site1.itempurl.com/api/tipoProductores/";
   constructor(
     private http:HttpClient
   ) { }

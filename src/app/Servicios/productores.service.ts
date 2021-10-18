@@ -8,7 +8,7 @@ import { Productores } from '../Clases/productores';
 })
 export class ProductoresService {
 
-  api="https://localhost:44349/api/productores/";
+  api="http://raphaelrod-001-site1.itempurl.com/api/productores/";
 
   constructor(
     private http:HttpClient

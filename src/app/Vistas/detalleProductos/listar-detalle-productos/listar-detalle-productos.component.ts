@@ -53,6 +53,8 @@ export class ListarDetalleProductosComponent implements OnInit {
 
   listar() {  
 
+
+
     this.spinner = 1;
 
     this.detalleCategoria.listar().subscribe(res => {

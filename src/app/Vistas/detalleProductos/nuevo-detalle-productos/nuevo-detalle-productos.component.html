@@ -87,7 +87,7 @@
 
 
                         <div class="row mt-3">
-                            <div class="col-4">
+                            <div class="col-6">
                                 <label for="exampleInputEmail1"
                                     class=" text-black-50 fw-bold fst-italic">Cantidad</label>
                                 <input
@@ -97,7 +97,7 @@
                             </div>
 
 
-                            <div class="col-4">
+                            <div class="col-6">
                                 <label for="exampleInputEmail1" class=" text-black-50 fw-bold fst-italic">$
                                     Unidad</label>
                                 <input
@@ -109,15 +109,7 @@
 
 
 
-                            <div class="col-4">
-                                <label for="exampleInputEmail1"
-                                    class=" text-black-50 fw-bold fst-italic">$Docena</label>
-                                <input
-                                    [class.border-danger]="proved.get('precioDocena')!.touched && proved.get('precioDocena')?.invalid"
-                                    [class.border-success]="proved.get('precioDocena')!.touched && proved.get('precioDocena')?.valid"
-                                    maxlength="10" formControlName="precioDocena" type="number"
-                                    class="form-control mb-2">
-                            </div>
+                         
 
                         </div>
 

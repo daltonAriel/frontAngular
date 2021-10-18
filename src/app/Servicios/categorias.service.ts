@@ -7,8 +7,8 @@ import { Categorias } from '../Clases/categorias';
   providedIn: 'root'
 })
 export class CategoriaService {
-  api="https://localhost:44349/api/categorias";
-//api="https://apinuevo.azurewebsites.net/api/categorias/";
+  api="http://raphaelrod-001-site1.itempurl.com/api/categorias/";
+
   constructor(private http:HttpClient) { }
 
 /*

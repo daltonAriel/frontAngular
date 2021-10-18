@@ -51,7 +51,7 @@
                         </div>
                         <div class="col">
                             <label for="exampleInputEmail1" class=" text-black-50 fw-bold fst-italic">Direccion</label>
-                            <input maxlength="15" formControlName="direccion" type="text" class="form-control"
+                            <input maxlength="200" formControlName="direccion" type="text" class="form-control"
                             [class.border-danger]="proved.get('direccion')!.touched && proved.get('direccion')?.invalid"
                             [class.border-success]="proved.get('direccion')!.touched && proved.get('direccion')?.valid"
                             >
@@ -61,7 +61,7 @@
                     <div class="row">
                         <div class="col">
                             <label for="exampleInputEmail1" class=" text-black-50 fw-bold fst-italic">Telefono</label>
-                            <input formControlName="telefono" type="text" class="form-control"
+                            <input formControlName="telefono" type="number" class="form-control"
                             [class.border-danger]="proved.get('telefono')!.touched && proved.get('telefono')?.invalid"
                             [class.border-success]="proved.get('telefono')!.touched && proved.get('telefono')?.valid"
                             >
@@ -111,9 +111,9 @@
 
                         <div class="col">
                             <label for="exampleInputEmail1" class=" text-black-50 fw-bold fst-italic">Web</label>
-                            <input maxlength="15" formControlName="web" type="text" class="form-control"
-                            [class.border-info]="proved.get('web')!.touched && proved.get('web')?.invalid"
-                            [class.border-info]="proved.get('web')!.touched && proved.get('web')?.valid"
+                            <input maxlength="15" formControlName="paginaWeb" type="text" class="form-control"
+                            [class.border-danger]="proved.get('paginaWeb')!.touched && proved.get('paginaWeb')?.invalid"
+                            [class.border-success]="proved.get('paginaWeb')!.touched && proved.get('paginaWeb')?.valid"
                             >
                         </div>
                     </div>

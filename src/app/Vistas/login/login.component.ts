@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit {
         this.spinner = 0;
         sessionStorage.setItem('sesion', JSON.stringify(res));
         this.router.navigate(['/menu']);
+      
       }
 
 
@@ -52,7 +53,11 @@ export class LoginComponent implements OnInit {
       alert("Error al iniciar sesion");
 
       this.spinner = 1;
-    })
+
+
+    }).add(() => {
+ 
+     });
 
   
 
