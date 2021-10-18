@@ -13,6 +13,7 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {
 
     this.sesion = JSON.parse(sessionStorage.getItem('sesion'));
+    
    
   }
 

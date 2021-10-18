@@ -5,9 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lista de Productos</title>
+
 </head>
 <div class="container">
-  <div class="text-uppercase text-center pt-3 pb-2 ">
+  <div class="text-uppercase text-center  pb-2 ">
     <h3 style="font-weight: bold;">Productos</h3>
   </div>
 </div>
@@ -19,7 +20,7 @@
 
 
 
-  <div class="text-center mt-4 ">
+  <div class="text-center  ">
     <a class="btn btn-primary col-5 col-sm-3" (click)="openModal(nuevo)">Nuevo</a>
   </div>
 
@@ -27,11 +28,11 @@
 
 
 
-  <div *ngIf="spinner==0" class="table-responsive mt-4    container" style="height: 530 px;">
+  <div *ngIf="spinner==0" class="table-responsive    container" style="height: 530 px;">
 
 
 
-    <div class="form-group ms-auto me-auto col-4">
+    <div class="form-group ms-auto me-auto col-4 " *ngIf="productoObj.length > 0">
 
 
       <div class="col mt-3">
@@ -41,7 +42,7 @@
 
         </span>
 
-        <input *ngIf="productoObj.length > 0" class="form-control" [(ngModel)]="busqueda"
+        <input  class="form-control" [(ngModel)]="busqueda"
           [ngModelOptions]="{standalone: true}">
 
       </div>
@@ -55,7 +56,7 @@
     </div>
 
 
-    <div class="table-responsive mt-4    container" style="height: 505px;">
+    <div class="table-responsive mt-4    container" style="height: 400px;">
 
 
    
@@ -85,31 +86,39 @@
             <td>{{item.nombreProducto}}  {{item.descripcion}}</td>
 
             <td class="text-center ">
-              <div class="btn-group dropdown " role="group" aria-label="Button group with nested dropdown">
-                <div class="btn-group" role="group">
-                  <button data-toggle="dropdown" id="dropdownMenuButton" type="button"
-                    class="btn btn-primary dropdown-toggle" aria-haspopup="true" aria-expanded="false">
-                    Opciones
+              <div class="btn-group">
+                  <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                      Opciones
                   </button>
-                  <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                    <li> <a class="dropdown-item" (click)="openModal(actualizar); llenarCampos(item)">Editar</a></li>
-                    <li> <a class="dropdown-item" (click)="elimiarProd(item.idProductos)">Eliminar</a></li>
+                  <ul class="dropdown-menu">
+                      <li><a class="dropdown-item"
+                        (click)="openModal(actualizar); llenarCampos(item)">Editar</a></li>
+                      <li><a class="dropdown-item" (click)="elimiarProd(item.idProductos)">Eliminar</a></li>
+
                   </ul>
-                </div>
               </div>
+       
+          </tr>
 
+          <tr>
+       
+            
 
-
-            </td>
+          
+          <td  colspan='5' *ngIf="productoObj.length == 0">
+            <div>
+        
+              <h5 class="text-center" >No Existen Registros</h5>
+            </div>
+          </td>
           </tr>
 
 
         </tbody>
       </table>
 
-      <div *ngIf="productoObj.length == 0 || (productoObj | filter: busqueda).length === 0">
-        <h5 class="text-center" >No Existen Registros</h5>
-      </div>
+  
 
     </div>
 

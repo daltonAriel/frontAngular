@@ -31,7 +31,8 @@
             ],
             "scripts": [
 
-              "./src/app/plantilla/sapMocha/js/app.js"
+              "./src/app/plantilla/sapMocha/js/app.js",
+              "./src/app/Vistas/nosotros/script.js"
 
               
            

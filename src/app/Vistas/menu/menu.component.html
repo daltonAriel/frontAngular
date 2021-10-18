@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-</head>
 
-<body style="overflow: hidden; height: 100vh !important; ">
+
 
 	<div class="wrapper">
 
@@ -103,15 +95,15 @@
 							<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#"
 								data-bs-toggle="dropdown">
 								<img src="../../../assets/img/nuevo_user.png" class="avatar img-fluid rounded me-1"
-									alt="Charles Hall" /> <span class="text-dark">Charles Hall</span>
+									alt="Charles Hall" /> <span class="text-dark">{{this.sesion[0].usuario}}</span>
 							</a>
 							<div class="dropdown-menu dropdown-menu-end">
 								<a class="dropdown-item" href="pages-profile.html">
-									<i class="align-middle me-1" data-feather="user"></i> Profile</a>
+									<i class="align-middle me-1" data-feather="user"></i> Perfil</a>
 
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="#"><i class="align-middle me-1"
-										data-feather="log-out"></i>Log out</a>
+									 (click)="salir()"	data-feather="log-out"></i>Salir</a>
 							</div>
 						</li>
 					</ul>
@@ -162,6 +154,4 @@
 
 
 
-</body>
 
-</html>
