@@ -17,8 +17,11 @@
 						Administracion
 					</li>
 
-					<li class="sidebar-item active">
-						<a class="sidebar-link" [routerLink]="['listarUsuario']">
+					<li class="sidebar-item" [ngClass]="{'active': editarUsuario.isActive|| listarUsuario.isActive || nuevoUsuario.isActive}">
+						<a class="sidebar-link" [routerLink]="['listarUsuario']" >
+							<a routerLink="/menu/editarUsuario/" routerLinkActive #editarUsuario="routerLinkActive" style="display: none"></a>
+							<a routerLink="/menu/listarUsuario/" routerLinkActive #listarUsuario="routerLinkActive" style="display: none"></a>
+							<a routerLink="/menu/nuevoUsuario/" routerLinkActive #nuevoUsuario="routerLinkActive" style="display: none"></a>
 							<i class="align-middle" data-feather="users"></i> <span
 								class="align-middle">Usuarios</span>
 						</a>
@@ -32,7 +35,7 @@
 
 					
 				
-					<li class="sidebar-item">
+					<li class="sidebar-item"  [routerLinkActive]="['active']">
 						<a class="sidebar-link" [routerLink]="['productos']">
 							<i class="align-middle" data-feather="check-square"></i> <span
 								class="align-middle">Nuevo Producto</span>
@@ -46,16 +49,24 @@
 						Productores
 					</li>
 
-					<li class="sidebar-item">
+					<li class="sidebar-item" [ngClass]="{'active': editarProveedor.isActive|| listarProveedor.isActive || nuevoProveedor.isActive}" >
 						<a class="sidebar-link"  [routerLink]="['listarProveedor']">
 							<i class="align-middle" data-feather="user"></i> <span class="align-middle">Nuevo Productor</span>
+							<a routerLink="/menu/editarProveedor/" routerLinkActive #editarProveedor="routerLinkActive" style="display: none"></a>
+							<a routerLink="/menu/listarProveedor/" routerLinkActive #listarProveedor="routerLinkActive" style="display: none"></a>
+							<a routerLink="/menu/nuevoProveedor/" routerLinkActive #nuevoProveedor="routerLinkActive" style="display: none"></a>
+							
+
 						</a>
 					</li>
 
-					<li class="sidebar-item">
+					<li class="sidebar-item" [ngClass]="{'active': editarDetalle.isActive|| listarDetalle.isActive || nuevoDetalle.isActive }">
 						<a class="sidebar-link" [routerLink]="['listarDetalle']">
 							<i class="align-middle" data-feather="user-plus"></i> <span
 								class="align-middle">Asignar Producto</span>
+								<a routerLink="/menu/listarDetalle/" routerLinkActive #editarDetalle="routerLinkActive" style="display: none"></a>
+							<a routerLink="/menu/editarDetalle/" routerLinkActive #listarDetalle="routerLinkActive" style="display: none"></a>
+							<a routerLink="/menu/nuevoDetalle/" routerLinkActive #nuevoDetalle="routerLinkActive" style="display: none"></a>
 						</a>
 					</li>
 
@@ -98,10 +109,9 @@
 									alt="Charles Hall" /> <span class="text-dark">{{this.sesion[0].usuario}}</span>
 							</a>
 							<div class="dropdown-menu dropdown-menu-end">
-								<a class="dropdown-item" href="pages-profile.html">
+								<!-- <a class="dropdown-item" href="pages-profile.html">
 									<i class="align-middle me-1" data-feather="user"></i> Perfil</a>
-
-								<div class="dropdown-divider"></div>
+								<div class="dropdown-divider"></div> -->
 								<a class="dropdown-item"	 (click)="salir()"><i class="align-middle me-1"
 									data-feather="log-out"></i>Salir</a>
 							</div>

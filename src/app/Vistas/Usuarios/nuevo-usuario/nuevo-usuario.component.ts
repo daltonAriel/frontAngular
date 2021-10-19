@@ -76,7 +76,7 @@ export class NuevoUsuarioComponent implements OnInit {
 
             this.clientes.nuevo(obj).subscribe(res=>{
 
-        this.router.navigate(['/menu/listarProveedor']);
+        this.router.navigate(['/menu/listarUsuario']);
         Swal.fire("Usuarios","Registro guardado con exito","success");
   
   

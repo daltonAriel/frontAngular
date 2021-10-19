@@ -254,4 +254,8 @@ export class NuevoProductoresComponent implements OnInit {
       this.listaTipo = res;
     })
   }
+
+  abrir(){
+    alert("hola");
+  }
 }
