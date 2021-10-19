@@ -1,6 +1,6 @@
 import { Productos } from 'src/app/Clases/productos';
 import { tipoProductores } from './../../Clases/tipoProductores';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import {Categorias} from '../../Clases/categorias';
 import {CategoriaService} from '../../Servicios/categorias.service';
 import {Proveedores} from '../../Clases/proveedores';
@@ -62,8 +62,11 @@ export class ProductosComponent implements OnInit {
     private productosService: ProductosService,
     private modalService: NgbModal,
     private tipoProductoresService: TipoProductoresService,
-    private categoriaService: CategoriaService
-  ) {}
+    private categoriaService: CategoriaService,
+    private elementRef: ElementRef
+  ) {
+    
+  }
 
   ngOnInit(): void {
     this.mostrar();
@@ -98,7 +101,7 @@ export class ProductosComponent implements OnInit {
     );
   }
 
-  filtrarCategorias() {
+  filtrarCategorias(event:any) {
     this.tallaNew = null;
     this.tallaUpdate = null;
     this.categoriaIdNew = 0;
@@ -134,7 +137,7 @@ export class ProductosComponent implements OnInit {
     }
   }
   //funcion que activara o desactivara la casilla de texto de RAZAS Y ENTREGA dependiodo si es TRUE O FALSE
-  comprobarRaza() {
+  comprobarRaza(event:any) {
     if(this.categoriaIdNew == 0 || this.categoriaIdNew == null){this.razaCheck = false}
     let x: Categorias;
     for (let i of this.categoriaFiltradoObj) {
@@ -155,6 +158,7 @@ export class ProductosComponent implements OnInit {
 
   async guardar() {
     ///validar selects
+    
     if (
       (this.categoriaIdNew == 0 ||
       this.categoriaIdNew == null) &&(
@@ -296,7 +300,9 @@ export class ProductosComponent implements OnInit {
         }
       );
     }
-    this.modalReference.close();
+
+    let x = this.elementRef.nativeElement.querySelector('#cancelar');
+    x.click();
   }
 
   llenarCampos(item: Productos) {
@@ -321,7 +327,7 @@ export class ProductosComponent implements OnInit {
         break;
       }
     }
-    this.filtrarCategorias();
+    this.filtrarCategorias('');
 
     this.categoriaIdNew = id_cat;
 
@@ -342,7 +348,7 @@ export class ProductosComponent implements OnInit {
     }
     this.tallaUpdate = item.talla;
 
-    this.comprobarRaza();
+    this.comprobarRaza('');
 
   }
 
@@ -499,7 +505,8 @@ export class ProductosComponent implements OnInit {
           }
         );
     }
-    this.modalReference.close();
+    let x = this.elementRef.nativeElement.querySelector('#cancelar2');
+    x.click();
   }
 
   limpiar() {
@@ -507,6 +514,8 @@ export class ProductosComponent implements OnInit {
     this.unidadNew = null;
     this.descripcionNew = 0;
     this.entregaNew = 0;
+    this.tipoProductorIdNew = 0;
+    this.categoriaIdNew = 0;
     this.tallaNew = null;
     this.tallaCheck = false;
     this.razaCheck = false;
@@ -572,4 +581,7 @@ export class ProductosComponent implements OnInit {
       timer: 3000,
     });
   }
+
+  
+
 }

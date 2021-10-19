@@ -20,119 +20,302 @@
 
 
 
-  <div class="text-center  ">
-    <a class="btn btn-primary col-5 col-sm-3" (click)="openModal(nuevo)">Nuevo</a>
+<div class="text-center">
+  <a type="button" class="btn btn-primary col-5 col-sm-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+    (click)="limpiar()">Nuevo</a>
+</div>
+
+
+
+
+
+<div *ngIf="spinner==0" class="table-responsive    container" style="height: 530 px;">
+
+
+
+  <div class="form-group ms-auto me-auto col-4 " *ngIf="productoObj.length > 0">
+
+
+    <div class="col mt-3">
+      <span>
+
+        <i class="fa fa-search"></i>
+
+      </span>
+
+      <input class="form-control" [(ngModel)]="busqueda" [ngModelOptions]="{standalone: true}">
+
+    </div>
+
+
+  </div>
+
+
+  <div *ngIf="(productoObj | filter: busqueda).length != 0"  class="text-center mt-3 mb-2" style="color: green; font-size: 1.2rem;">
+    <label>Total </label> <strong>  {{productoObj.length}}</strong>
+  </div>
+
+  
+
+  <div *ngIf="(productoObj | filter: busqueda).length == 0"  class="text-center mt-3 mb-2" style="color: green; font-size: 1.2rem;">
+    <label>Total </label> <strong>  0</strong>
   </div>
 
 
 
 
-
-  <div *ngIf="spinner==0" class="table-responsive    container" style="height: 530 px;">
-
+  <div class="table-responsive mt-4    container" style="height: 400px;">
 
 
-    <div class="form-group ms-auto me-auto col-4 " *ngIf="productoObj.length > 0">
 
 
-      <div class="col mt-3">
-        <span>
 
-          <i class="fa fa-search"></i>
+    <table *ngIf="productoObj.length > 0" class="table table-bordered table-sm text-center">
+      <thead class="bg-dark text-white " *ngIf="(productoObj | filter: busqueda).length != 0">
+        <tr>
+          <td>#</td>
+          <td>Nombre</td>
+          <td>Unidad</td>
+          <td>Descripcion</td>
+          <td>Opciones</td>
 
-        </span>
-
-        <input  class="form-control" [(ngModel)]="busqueda"
-          [ngModelOptions]="{standalone: true}">
-
-      </div>
-
-
-    </div>
-
-      
-    <div class="text-center mt-3 mb-2" style="color: green; font-size: 1.2rem;">
-      <label>Total </label>   <strong >  {{productoObj.length}} </strong>
-    </div>
+        </tr>
+      </thead>
 
 
-    <div class="table-responsive mt-4    container" style="height: 400px;">
+      <tbody>
+        <tr class="text-dark webkit-scrollbar," class="text-dark">
+        <tr *ngFor="let item of productoObj | filter:busqueda; let i=index;" class="text-dark webkit-scrollbar,"
+          class="text-dark">
+          <td><strong>{{i+1}}</strong></td>
+
+          <td>{{item.nombreProducto}}</td>
+          <td>{{item.unidad}}</td>
+          <td>{{item.nombreProducto}} {{item.descripcion}}</td>
+
+          <td class="text-center ">
+            <div class="btn-group">
+              <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Opciones
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop2" (click)="llenarCampos(item)">Editar</a>
+                </li>
+                <li><a class="dropdown-item" (click)="elimiarProd(item.idProductos)">Eliminar</a></li>
+
+              </ul>
+            </div>
+
+        </tr>
+
+        <tr>
 
 
-   
-
-     
-      <table *ngIf="productoObj.length > 0" class="table table-bordered table-sm text-center">
-        <thead class="bg-dark text-white " *ngIf="(productoObj | filter: busqueda).length != 0">
-          <tr>
-            <td>#</td>
-            <td>Nombre</td>
-            <td>Unidad</td>
-            <td>Descripcion</td>
-            <td>Opciones</td>
-
-          </tr>
-        </thead>
 
 
-        <tbody>
-          <tr class="text-dark webkit-scrollbar," class="text-dark">
-          <tr *ngFor="let item of productoObj | filter:busqueda; let i=index;" class="text-dark webkit-scrollbar,"
-            class="text-dark">
-            <td><strong>{{i+1}}</strong></td>
-
-            <td>{{item.nombreProducto}}</td>
-            <td>{{item.unidad}}</td>
-            <td>{{item.nombreProducto}}  {{item.descripcion}}</td>
-
-            <td class="text-center ">
-              <div class="btn-group">
-                  <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
-                      aria-expanded="false">
-                      Opciones
-                  </button>
-                  <ul class="dropdown-menu">
-                      <li><a class="dropdown-item"
-                        (click)="openModal(actualizar); llenarCampos(item)">Editar</a></li>
-                      <li><a class="dropdown-item" (click)="elimiarProd(item.idProductos)">Eliminar</a></li>
-
-                  </ul>
-              </div>
-       
-          </tr>
-
-          <tr>
-       
-            
-
-          
-          <td  colspan='5' *ngIf="productoObj.length == 0">
+          <td colspan='5' *ngIf="(productoObj | filter: busqueda).length == 0">
             <div>
-        
-              <h5 class="text-center" >No Existen Registros</h5>
+              <h5 class="text-center">No Existen Registros</h5>
             </div>
           </td>
-          </tr>
+        </tr>
 
 
-        </tbody>
-      </table>
+      </tbody>
+    </table>
 
-  
 
-    </div>
 
   </div>
 
+</div>
 
-  <div *ngIf="spinner==1" class="text-center  " style="margin-top: 10em;">
-    <div class="spinner-border text-primary" role="status">
+
+<div *ngIf="spinner==1" class="text-center  " style="margin-top: 10em;">
+  <div class="spinner-border text-primary" role="status">
+  </div>
+</div>
+
+
+
+
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Launch static backdrop modal
+</button>
+
+<!-- Modal  NUEVO-->
+<div class="modal fade" id="staticBackdrop" name="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+  tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="staticBackdropLabel">Nuevo Producto</h3>
+      </div>
+      <div class="modal-body">
+        <p>Tipo Productor</p>
+        <select class="form-select" [(ngModel)]="tipoProductorIdNew" (change)="filtrarCategorias($event.target.value)"
+          [class.border-danger]="checkProductor == true">
+          <option value=0 selected disabled hidden>Seleccione una Opcion</option>
+          <option value={{item.idTipoProductores}} *ngFor="let item of tipoProductoresObj">
+            {{item.nombre}}
+          </option>
+        </select>
+
+        <br>
+
+        <p>Categoria</p>
+        <select class="form-select" [(ngModel)]="categoriaIdNew" (change)="comprobarRaza($event.target.value)"
+          [class.border-danger]="checkCategoria == true">
+          <option value=0 selected disabled hidden>Seleccione una Opcion</option>
+
+          <ng-container *ngFor="let item of categoriaFiltradoObj">
+            <option value={{item.idCategorias}} *ngIf="item.descripcion == null">
+              {{item.nombre}}
+            </option>
+            <option value={{item.idCategorias}} *ngIf="item.descripcion != null">
+              {{item.nombre}} - {{item.descripcion}}
+            </option>
+          </ng-container>
+        </select>
+
+        <br>
+
+        <div *ngIf="razaCheck == true">
+          <p>Razas</p>
+          <select class="form-select" [(ngModel)]="descripcionNew">
+            <option value={{i}} *ngFor="let item of razas;let i=index">{{item}}</option>
+          </select>
+        </div>
+
+        <br>
+
+        <div *ngIf="razaCheck == true">
+          <p>Entrega</p>
+          <select class="form-select" [(ngModel)]="entregaNew">
+            <option value={{i}} *ngFor="let item of entregas;let i=index">{{item}}</option>
+          </select>
+        </div>
+
+        <br>
+
+        <p>Nombre</p>
+        <input type="text" class="form-control" [(ngModel)]="nombreNew" [class.border-danger]="checkNombre == true">
+        <br>
+
+        <p>Unidad</p>
+        <input type="text" class="form-control" [(ngModel)]="unidadNew" [class.border-danger]="checkUnidad == true">
+        <br>
+
+        <div *ngIf="tallaCheck == true">
+          <p>Talla</p>
+          <input type="text" class="form-control" [(ngModel)]="tallaNew" [class.border-danger]="checkTalla == true">
+          <br>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="guardar()">Guardar</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cancelar"
+          name="cancelar">Cancelar</button>
+      </div>
     </div>
   </div>
+</div>
 
 
 
-  
+
+
+<!-- Modal  EDITAR-->
+
+<div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="staticBackdropLabel">Editar Producto</h3>
+      </div>
+      <div class="modal-body">
+        <p>Tipo Productor</p>
+        <select class="form-select" [(ngModel)]="tipoProductorIdNew"
+          (change)="filtrarCategorias($event.target.value); comprobarRaza('')"
+          [class.border-danger]="checkProductor == true">
+          <option value=0 selected disabled hidden>Seleccione una Opcion</option>
+          <option value={{item.idTipoProductores}} *ngFor="let item of tipoProductoresObj">
+            {{item.nombre}}
+          </option>
+        </select>
+
+        <br>
+
+        <p>Categoria</p>
+        <select class="form-select" [(ngModel)]="categoriaIdNew" (change)="comprobarRaza($event.target.value)"
+          [class.border-danger]="checkCategoria == true">
+          <option value=0 selected disabled hidden>Seleccione una Opcion</option>
+
+          <ng-container *ngFor="let item of categoriaFiltradoObj">
+            <option value={{item.idCategorias}} *ngIf="item.descripcion == null">
+              {{item.nombre}}
+            </option>
+            <option value={{item.idCategorias}} *ngIf="item.descripcion != null">
+              {{item.nombre}} - {{item.descripcion}}
+            </option>
+          </ng-container>
+        </select>
+
+        <br>
+
+        <div *ngIf="razaCheck == true">
+          <p>Razas</p>
+          <select class="form-select" [(ngModel)]="descripcionNew">
+            <option value={{i}} *ngFor="let item of razas;let i=index">{{item}}</option>
+          </select>
+        </div>
+
+        <br>
+
+        <div *ngIf="razaCheck == true">
+          <p>Entrega</p>
+          <select class="form-select" [(ngModel)]="entregaNew">
+            <option value={{i}} *ngFor="let item of entregas;let i=index">{{item}}</option>
+          </select>
+        </div>
+
+        <br>
+
+        <p>Nombre</p>
+        <input type="text" class="form-control" [(ngModel)]="nombreUpdate" [class.border-danger]="checkNombre == true">
+        <br>
+
+        <p>Unidad</p>
+        <input type="text" class="form-control" [(ngModel)]="unidadUpdate" [class.border-danger]="checkUnidad == true">
+        <br>
+
+
+        <div *ngIf="tallaCheck == true">
+          <p>Talla</p>
+          <input type="text" class="form-control" [(ngModel)]="tallaUpdate" [class.border-danger]="checkTalla == true">
+          <br>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="actualizarProd()">Guardar</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cancelar2"
+        name="cancelar2">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
 
 
 
@@ -140,167 +323,3 @@
 
 
 </html>
-
-<ng-template #nuevo let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title">Nuevo Producto</h4>
-        
-    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-  </div>
-  <div class="modal-body">
-
-    <p>Tipo Productor</p>
-    <select class="form-control" [(ngModel)]="tipoProductorIdNew" (change)="filtrarCategorias($event.target.value)"
-      [class.border-danger]="checkProductor == true">
-      <option value=0 selected disabled hidden>Seleccione una Opcion</option>
-      <option value={{item.idTipoProductores}} *ngFor="let item of tipoProductoresObj">
-        {{item.nombre}}
-      </option>
-    </select>
-
-    <br>
-
-    <p>Categoria</p>
-    <select class="form-control" [(ngModel)]="categoriaIdNew" (change)="comprobarRaza($event.target.value)"
-      [class.border-danger]="checkCategoria == true">
-      <option value=0 selected disabled hidden>Seleccione una Opcion</option>
-
-      <ng-container *ngFor="let item of categoriaFiltradoObj">
-        <option value={{item.idCategorias}} *ngIf="item.descripcion == null">
-          {{item.nombre}}
-        </option>
-        <option value={{item.idCategorias}} *ngIf="item.descripcion != null">
-          {{item.nombre}} - {{item.descripcion}}
-        </option>
-      </ng-container>
-    </select>
-
-    <br>
-
-    <div *ngIf="razaCheck == true">
-      <p>Razas</p>
-      <select class="form-control" [(ngModel)]="descripcionNew">
-        <option value={{i}} *ngFor="let item of razas;let i=index">{{item}}</option>
-      </select>
-    </div>
-
-    <br>
-
-    <div *ngIf="razaCheck == true">
-      <p>Entrega</p>
-      <select class="form-control" [(ngModel)]="entregaNew">
-        <option value={{i}} *ngFor="let item of entregas;let i=index">{{item}}</option>
-      </select>
-    </div>
-
-    <br>
-
-    <p>Nombre</p>
-    <input type="text" class="form-control" [(ngModel)]="nombreNew" [class.border-danger]="checkNombre == true">
-    <br>
-
-    <p>Unidad</p>
-    <input type="text" class="form-control" [(ngModel)]="unidadNew" [class.border-danger]="checkUnidad == true">
-    <br>
-
-    <div *ngIf="tallaCheck == true">
-      <p>Talla</p>
-      <input type="text" class="form-control" [(ngModel)]="tallaNew" [class.border-danger]="checkTalla == true">
-      <br>
-    </div>
-
-
-
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-light" (click)="guardar()">Guardar</button>
-    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Cancelar</button>
-  </div>
-</ng-template>
-
-
-
-
-
-<ng-template #actualizar let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title">Actualizr Producto</h4>
-    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-  </div>
-  <div class="modal-body">
-
-    <p>Tipo Productor</p>
-    <select class="form-control" [(ngModel)]="tipoProductorIdNew"
-      (change)="filtrarCategorias($event.target.value); comprobarRaza()" [class.border-danger]="checkProductor == true">
-      <option value=0 selected disabled hidden>Seleccione una Opcion</option>
-      <option value={{item.idTipoProductores}} *ngFor="let item of tipoProductoresObj">
-        {{item.nombre}}
-      </option>
-    </select>
-
-    <br>
-
-    <p>Categoria</p>
-    <select class="form-control" [(ngModel)]="categoriaIdNew" (change)="comprobarRaza($event.target.value)"
-      [class.border-danger]="checkCategoria == true">
-      <option value=0 selected disabled hidden>Seleccione una Opcion</option>
-
-      <ng-container *ngFor="let item of categoriaFiltradoObj">
-        <option value={{item.idCategorias}} *ngIf="item.descripcion == null">
-          {{item.nombre}}
-        </option>
-        <option value={{item.idCategorias}} *ngIf="item.descripcion != null">
-          {{item.nombre}} - {{item.descripcion}}
-        </option>
-      </ng-container>
-    </select>
-
-    <br>
-
-    <div *ngIf="razaCheck == true">
-      <p>Razas</p>
-      <select class="form-control" [(ngModel)]="descripcionNew">
-        <option value={{i}} *ngFor="let item of razas;let i=index">{{item}}</option>
-      </select>
-    </div>
-
-    <br>
-
-    <div *ngIf="razaCheck == true">
-      <p>Entrega</p>
-      <select class="form-control" [(ngModel)]="entregaNew">
-        <option value={{i}} *ngFor="let item of entregas;let i=index">{{item}}</option>
-      </select>
-    </div>
-
-    <br>
-
-    <p>Nombre</p>
-    <input type="text" class="form-control" [(ngModel)]="nombreUpdate" [class.border-danger]="checkNombre == true">
-    <br>
-
-    <p>Unidad</p>
-    <input type="text" class="form-control" [(ngModel)]="unidadUpdate" [class.border-danger]="checkUnidad == true">
-    <br>
-
-
-    <div *ngIf="tallaCheck == true">
-      <p>Talla</p>
-      <input type="text" class="form-control" [(ngModel)]="tallaUpdate" [class.border-danger]="checkTalla == true">
-      <br>
-    </div>
-
-
-
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-light" (click)="actualizarProd()">Guardar
-      Cambios</button>
-    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Cancelar</button>
-  </div>
-</ng-template>
-
-
-
-
-
