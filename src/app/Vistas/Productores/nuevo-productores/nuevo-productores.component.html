@@ -79,7 +79,7 @@
                     </div>
                     <div class="col">
                         <label for="exampleInputEmail1" class=" text-black-50 fw-bold fst-italic">Sexo</label>
-                        <select class="form-control" aria-label="Default select example" formControlName='sexo'
+                        <select class="form-select" aria-label="Default select example" formControlName='sexo'
                             [class.border-danger]="proved.get('sexo')!.touched && proved.get('sexo')?.invalid"
                             [class.border-success]="proved.get('sexo')!.touched && proved.get('sexo')?.valid">
                             <option value="Masculino">Masculino</option>
@@ -158,7 +158,7 @@
                                     href="#multiCollapseExample1" role="button" aria-expanded="false"
                                     aria-controls="multiCollapseExample1" formControlName='organizacion'><label
                                     class="form-check-label " for="exampleCheck1">Organizacion</label>
-                                    <i class="align-middle" data-feather="chevron-down"  data-bs-toggle="collapse"  href="#multiCollapseExample1" style="cursor: pointer;"></i> 
+                                    <strong class="align-middle"   data-bs-toggle="collapse"  href="#multiCollapseExample1" style="cursor: pointer; font-size: 20px;">  +</strong> 
                                 <div class="collapse multi-collapse " style="margin-top: 10px !important;" id="multiCollapseExample1">
                                     <label for="exampleInputEmail1"
                                         class=" text-black-50 fw-bold fst-italic ">Detalle</label>
@@ -185,7 +185,7 @@
                                 aria-controls="multiCollapseExample1" formControlName='discapacidad'
                                 [defaultValue]="false">
                             <label class="form-check-label" for="exampleCheck1">Discapacidad</label>
-                            <i class="align-middle" data-feather="chevron-down"  data-bs-toggle="collapse"  href="#multiCollapseExample2" style="cursor: pointer;"></i> 
+                            <strong class="align-middle"   data-bs-toggle="collapse"  href="#multiCollapseExample2" style="cursor: pointer; font-size: 20px;">  +</strong> 
 
 
                             <div class="col ">
