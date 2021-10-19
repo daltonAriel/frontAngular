@@ -1,13 +1,13 @@
 import { Productos } from 'src/app/Clases/productos';
 import { tipoProductores } from './../../Clases/tipoProductores';
 import { Component, ElementRef, OnInit } from '@angular/core';
-import {Categorias} from '../../Clases/categorias';
-import {CategoriaService} from '../../Servicios/categorias.service';
-import {Proveedores} from '../../Clases/proveedores';
+import { Categorias } from '../../Clases/categorias';
+import { CategoriaService } from '../../Servicios/categorias.service';
+import { Proveedores } from '../../Clases/proveedores';
 
-import {TipoProductoresService} from '../../Servicios/tipoProductores.service';
+import { TipoProductoresService } from '../../Servicios/tipoProductores.service';
 
-import {ProductosService} from '../../Servicios/productos.service';
+import { ProductosService } from '../../Servicios/productos.service';
 import { NgbModal, NgbModalRef, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 import Swal from 'sweetalert2';
@@ -22,9 +22,9 @@ export class ProductosComponent implements OnInit {
   ///
   checkProductor: boolean = false;
   checkCategoria: boolean = false;
-  checkNombre:boolean = false;
-  checkUnidad:boolean = false;
-  checkTalla:boolean = false;
+  checkNombre: boolean = false;
+  checkUnidad: boolean = false;
+  checkTalla: boolean = false;
   ///
 
   busqueda;
@@ -65,7 +65,7 @@ export class ProductosComponent implements OnInit {
     private categoriaService: CategoriaService,
     private elementRef: ElementRef
   ) {
-    
+
   }
 
   ngOnInit(): void {
@@ -101,7 +101,7 @@ export class ProductosComponent implements OnInit {
     );
   }
 
-  filtrarCategorias(event:any) {
+  filtrarCategorias(event: any) {
     this.tallaNew = null;
     this.tallaUpdate = null;
     this.categoriaIdNew = 0;
@@ -112,7 +112,7 @@ export class ProductosComponent implements OnInit {
       }
     }
     this.comprobarTalla();
-   // this.comprobarRaza();
+    // this.comprobarRaza();
   }
 
   //funcion que activara o desactivara la casilla de texto de TALLA dependiodo si es TRUE O FALSE
@@ -137,8 +137,8 @@ export class ProductosComponent implements OnInit {
     }
   }
   //funcion que activara o desactivara la casilla de texto de RAZAS Y ENTREGA dependiodo si es TRUE O FALSE
-  comprobarRaza(event:any) {
-    if(this.categoriaIdNew == 0 || this.categoriaIdNew == null){this.razaCheck = false}
+  comprobarRaza(event: any) {
+    if (this.categoriaIdNew == 0 || this.categoriaIdNew == null) { this.razaCheck = false }
     let x: Categorias;
     for (let i of this.categoriaFiltradoObj) {
       if (i.idCategorias == this.categoriaIdNew) {
@@ -158,39 +158,39 @@ export class ProductosComponent implements OnInit {
 
   async guardar() {
     ///validar selects
-    
+
     if (
       (this.categoriaIdNew == 0 ||
-      this.categoriaIdNew == null) &&(
-      this.tipoProductorIdNew == 0 ||
-      this.tipoProductorIdNew == null)
-    ){
+        this.categoriaIdNew == null) && (
+        this.tipoProductorIdNew == 0 ||
+        this.tipoProductorIdNew == null)
+    ) {
       this.checkProductor = true;
       this.checkCategoria = true;
       return;
     }
-    else{
+    else {
       this.checkProductor = false;
       this.checkCategoria = false;
     }
     if (
       this.tipoProductorIdNew == 0 ||
       this.tipoProductorIdNew == null
-    ){
+    ) {
       this.checkProductor = true;
       return;
     }
-    else{
+    else {
       this.checkProductor = false;
     }
     if (
       this.categoriaIdNew == 0 ||
       this.categoriaIdNew == null
-    ){
+    ) {
       this.checkCategoria = true;
       return;
     }
-    else{
+    else {
       this.checkCategoria = false;
     }
     //validar selects fin
@@ -215,15 +215,15 @@ export class ProductosComponent implements OnInit {
     ///validar nombre unidad
     if (
       (objProd.nombreProducto == '' ||
-      objProd.nombreProducto == null) &&
+        objProd.nombreProducto == null) &&
       (objProd.unidad == '' ||
-      objProd.unidad == null)
+        objProd.unidad == null)
     ) {
       this.checkUnidad = true;
       this.checkNombre = true;
       return;
     }
-    else{
+    else {
       this.checkUnidad = false;
       this.checkNombre = false;
     }
@@ -235,7 +235,7 @@ export class ProductosComponent implements OnInit {
       this.checkNombre = true;
       return;
     }
-    else{
+    else {
       this.checkNombre = false;
     }
 
@@ -246,7 +246,7 @@ export class ProductosComponent implements OnInit {
       this.checkUnidad = true;
       return;
     }
-    else{
+    else {
       this.checkUnidad = false;
     }
     /////
@@ -260,7 +260,7 @@ export class ProductosComponent implements OnInit {
         this.checkTalla = true;
         return;
       }
-      else{
+      else {
         this.checkTalla = false;
       }
       await this.productosService.nuevoProducto(objProd).subscribe(
@@ -356,15 +356,15 @@ export class ProductosComponent implements OnInit {
     ///validar selects
     if (
       (this.categoriaIdNew == 0 ||
-      this.categoriaIdNew == null) &&(
-      this.tipoProductorIdNew == 0 ||
-      this.tipoProductorIdNew == null)
-    ){
+        this.categoriaIdNew == null) && (
+        this.tipoProductorIdNew == 0 ||
+        this.tipoProductorIdNew == null)
+    ) {
       this.checkProductor = true;
       this.checkCategoria = true;
       return;
     }
-    else{
+    else {
       this.checkProductor = false;
       this.checkCategoria = false;
     }
@@ -372,22 +372,22 @@ export class ProductosComponent implements OnInit {
     if (
       this.tipoProductorIdNew == 0 ||
       this.tipoProductorIdNew == null
-    ){
+    ) {
       this.checkProductor = true;
       return;
     }
-    else{
+    else {
       this.checkProductor = false;
     }
 
     if (
       this.categoriaIdNew == 0 ||
       this.categoriaIdNew == null
-    ){
+    ) {
       this.checkCategoria = true;
       return;
     }
-    else{
+    else {
       this.checkCategoria = false;
     }
     //validar selects fin
@@ -413,15 +413,15 @@ export class ProductosComponent implements OnInit {
     ///validar nombre unidad
     if (
       (objProd.nombreProducto == '' ||
-      objProd.nombreProducto == null) &&
+        objProd.nombreProducto == null) &&
       (objProd.unidad == '' ||
-      objProd.unidad == null)
+        objProd.unidad == null)
     ) {
       this.checkUnidad = true;
       this.checkNombre = true;
       return;
     }
-    else{
+    else {
       this.checkUnidad = false;
       this.checkNombre = false;
     }
@@ -433,7 +433,7 @@ export class ProductosComponent implements OnInit {
       this.checkNombre = true;
       return;
     }
-    else{
+    else {
       this.checkNombre = false;
     }
 
@@ -444,7 +444,7 @@ export class ProductosComponent implements OnInit {
       this.checkUnidad = true;
       return;
     }
-    else{
+    else {
       this.checkUnidad = false;
     }
     /////
@@ -459,7 +459,7 @@ export class ProductosComponent implements OnInit {
         this.checkTalla = true;
         return;
       }
-      else{
+      else {
         this.checkTalla = false;
       }
 
@@ -522,23 +522,53 @@ export class ProductosComponent implements OnInit {
   }
 
   elimiarProd(id: any) {
-    this.productosService.eliminarProducto(id).subscribe(
-      (res) => {
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'Eliminacion exitosa',
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      },
-      (error) => {
-        console.log('Error al eliminar');
-      },
-      () => {
-        this.mostrar();
+
+alert();
+
+
+    Swal.fire({
+      title: '¿Esta seguro que desea eliminar?',
+      text: " este registro se eliminará permanentemente",
+      icon: 'warning',
+      confirmButtonColor: "#29A05B",
+      showCancelButton: true,
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: 'Aceptar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+
+        this.productosService.eliminarProducto(id).subscribe(
+          (res) => {
+    
+    
+    
+            Swal.fire('Productos', 'Registro Eliminado exitosamente ', 'success');
+            this.mostrar();
+    
+    
+    
+    
+      
+          },
+       
+        );
+
+    
+
+    
       }
-    );
+    },error=>{
+       
+      alert("Error al eliminar");
+
+    });
+
+
+
+
+
   }
 
   openModal(content) {
@@ -582,6 +612,6 @@ export class ProductosComponent implements OnInit {
     });
   }
 
-  
+
 
 }
